@@ -1,18 +1,18 @@
-<p align="center">
-  <img src="./images/shenron.gif" alt="shenron"/>
-</p>
-
-# <center>Cliptor</center>
+# <p align="center">Cliptor</p>
 
 <p align="center">
    An Interactive command line interface & config helper for ProtractorJS
 <p>
 
-**<center>[About](#about)** **|** **[To Get Started](#to-get-started)** **|** **[Installation](#installation)** **|** **[Commands](#commands)</center>**
+### <p align="center"> [About](#about) **|** [To Get Started](#to-get-started) **|** [Installation](#installation) **|** [Commands](#commands) </p>
 
 ## About
 
 Cliptor is an interactive command line interface which helps in setting up hassle free protractor projects. It takes user's inputs for generating protractor config files and also downloads the dependencies needed for writing e2e tests.
+
+<p>
+  <img src="./images/cliptor.gif" alt="cliptor"/>
+</p>
 
 ### What Cliptor is trying to solve?
 
@@ -41,10 +41,6 @@ $ npm install --global cliptor
 $ cliptor config
 ```
 Starts protractor's interactive cli, generates config files & downloads protractor related dependencies!
-
-<p>
-  <img src="./images/cliptor.gif" alt="cliptor"/>
-</p>
 
 ### install
 
