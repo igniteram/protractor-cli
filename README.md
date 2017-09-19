@@ -1,17 +1,12 @@
 <p align="center">
   <img src="./images/shenron.gif" alt="shenron"/>
 </p>
-<style>
-font {
-    font-family: Times;
-    color: red;
-}
-</style>
 
-# <font><center>Cliptor</center></font>
+# <center>Cliptor</center>
 
 <p align="center">
    An Interactive command line interface & config helper for ProtractorJS
+<p>
 
 **<center>[About](#about)** **|** **[To Get Started](#to-get-started)** **|** **[Installation](#installation)** **|** **[Commands](#commands)</center>**
 
