@@ -1,0 +1,15 @@
+.vs_code
+package-lock.json
+
+# dev folders
+
+built/**/*.map
+lib/
+images/
+
+# dev files
+
+.gitignore
+.npmignore
+tsconfig.json
+tslint.json
