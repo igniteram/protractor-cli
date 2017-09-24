@@ -16,7 +16,7 @@ exports.config = {
     * stabilize between tasks.
     */  
     allScriptsTimeout: 120000,
-    <%_ if(seleniumServerJarExpression) { %>
+    <% if(seleniumServerJarExpression) { %>
     /**
     * The location of the standalone Selenium Server jar file, relative
     * to the location of webdriver-manager. If no other method of starting
@@ -144,8 +144,10 @@ exports.config = {
     * and globals from the test framework will NOT be available. The main
     * purpose of this function should be to bring up test dependencies.
     */
-    <%- beforeLaunchExpression _%>
-    <% } _%>
+    beforeLaunch: () => {
+        <%- beforeLaunchExpression _%>
+    },
+    <% } %>
     <% if(answers.framework === "jasmine") { _%>
     /**
     * Options to be passed to jasmine.
@@ -155,7 +157,7 @@ exports.config = {
     */
     jasmineNodeOpts: {
         defaultTimeoutInterval: 120000,
-        <% if(answers.reportType === "spec") { %>
+        <% if(answers.reportType === "spec") { _%>
         print: () => {},
         <% } _%>
         showColors: true,
@@ -171,58 +173,45 @@ exports.config = {
     mochaOpts: {
         bail: true,
         colors: true,
-        <% if(answers.transpiler) {  _%> 
-        <% if(answers.transpilerType === "typescript") { _%>
-        compilers:"ts:ts-node/register",                               
-        <% } _%>
-        <% if(answers.transpilerType === "coffee-script") { _%>
-        compilers:"coffee:coffee-script/register",                 
-        <% } -%> <% } _%>    
-        <% if(answers.reportType === "html") { %>
-        reporter: "mochawesome",
-        reporterOptions : {
-            reportDir: "./reports",
-            reportFileName: "protractor_mocha_report",
-            enableCharts: true
-        },
-        <% } else { %>
-        reporter: <%= answers.reportType %>,
-        <% } _%>
+        compilers:<%- transpilerExpression %>, 
+        reporter:<%- mochaReportExpression %>,
         timeout: 30000,
         ui: "bdd",
         },
         <% } _%>
-        <% if(onPrepareExpression) { %>
-            /**
-            * A callback function called once protractor is ready and available, and
-            * before the specs are executed. If multiple capabilities are being run,
-            * this will run once per capability.
-            *
-            * You can specify a file containing code to run by setting onPrepare to
-            * the filename string. onPrepare can optionally return a promise, which
-            * Protractor will wait for before continuing execution. This can be used if
-            * the preparation involves any asynchronous calls, e.g. interacting with
-            * the browser. Otherwise Protractor cannot guarantee order of execution
-            * and may start the tests before preparation finishes.
-            *
-            * At this point, global variable 'protractor' object will be set up, and
-            * globals from the test framework will be available. For example, if you
-            * are using Jasmine, you can add a reporter with:
-            *
-            *    jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter(
-            *      'outputdir/', true, true));
-            *
-            * If you need access back to the current configuration object,
-            * use a pattern like the following:
-            *
-            *    return browser.getProcessedConfig().then(function(config) {
-            *      // config.capabilities is the CURRENT capability being run, if
-            *      // you are using multiCapabilities.
-            *      console.log('Executing capability', config.capabilities);
-            *    });
-            */
-        <%- onPrepareExpression _%>
-        <% } _%>  
+    <% if(onPrepareExpression) { %>
+    /**
+    * A callback function called once protractor is ready and available, and
+    * before the specs are executed. If multiple capabilities are being run,
+    * this will run once per capability.
+    *
+    * You can specify a file containing code to run by setting onPrepare to
+    * the filename string. onPrepare can optionally return a promise, which
+    * Protractor will wait for before continuing execution. This can be used if
+    * the preparation involves any asynchronous calls, e.g. interacting with
+    * the browser. Otherwise Protractor cannot guarantee order of execution
+    * and may start the tests before preparation finishes.
+    *
+    * At this point, global variable 'protractor' object will be set up, and
+    * globals from the test framework will be available. For example, if you
+    * are using Jasmine, you can add a reporter with:
+    *
+    *    jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter(
+    *      'outputdir/', true, true));
+    *
+    * If you need access back to the current configuration object,
+    * use a pattern like the following:
+    *
+    *    return browser.getProcessedConfig().then(function(config) {
+    *      // config.capabilities is the CURRENT capability being run, if
+    *      // you are using multiCapabilities.
+    *      console.log('Executing capability', config.capabilities);
+    *    });
+    */
+    onPrepare: () => {
+        <%- onPrepareExpression %>
+    },
+    <% } %>  
     <% if(answers.framework === "cucumber"){ %>
         /**
         * Options to be passed to cucumber.
@@ -231,13 +220,7 @@ exports.config = {
         * for the exact options available.
         */
     cucumberOpts: {
-    <% if(answers.transpiler) {  _%> 
-    <% if(answers.transpilerType === "typescript") { _%>
-        "compiler":"ts:ts-node/register",                               
-    <% } _%>
-    <% if(answers.transpilerType === "coffee-script") { _%>
-        "compiler":"coffee:coffee-script/register",                 
-    <% } -%> <% } _%>                                                       
+        "compiler":<%- transpilerExpression %>,                                                  
         "dry-run": false,                                           
         "fail-fast": false,                                         
         "format":["<%- formatExpression _%>"],                                                           
@@ -255,7 +238,9 @@ exports.config = {
     * At this point, tests will be done but global objects will still be
     * available.
     */
-    <%- onCompleteExpression _%>
+    onComplete: () => {
+        <%- onCompleteExpression _%>
+    }
     <% } _%>
 
 };

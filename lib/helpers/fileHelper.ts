@@ -8,7 +8,10 @@ const tsconfig = require("../../templates/tsconfig.e2e.json");
 
 export class FileHelper {
   public static createDirectory(filepath: string) {
-    const dirname = path.join(process.cwd(), filepath.substring(0, filepath.indexOf("*")));
+    if(filepath.indexOf("*") > -1) {
+      filepath = filepath.substring(0, filepath.indexOf("*"))
+    }
+    const dirname = path.join(process.cwd(), filepath);
     if (!fs.existsSync(dirname)) {
       mkdirp.sync(dirname);
     }
@@ -18,11 +21,13 @@ export class FileHelper {
   private formatExpression: string;
   private jasmineReportExpression: string;
   private logExpression: string;
+  private mochaReportExpression: string;
   private onCompleteExpression: string;
   private onPrepareExpression: string;
+  private renderedFile: any;
   private seleniumAddressExpression: string;
   private seleniumServerJarExpression: string;
-  private renderedFile: any;
+  private transpilerExpression: string;
   private tmplFile: any;
   private tsconfigTypes: string[] = [];
 
@@ -41,38 +46,43 @@ export class FileHelper {
     if (answers.framework === "jasmine") {
       if (answers.jasmineTStranspiler) {
         this.tsconfigTypes.push("jasmine", "jasminewd2");
-        this.beforeLaunchExpression = `
-                        beforeLaunch: () => {
-                             require("ts-node").register({
-                                  project: "./tsconfig.e2e.json"
-                              });
-                        },
-                        `;
+        this.beforeLaunchExpression =
+        `require("ts-node").register({
+            project: "./tsconfig.e2e.json"
+         });`;
       }
       if (answers.reportType === "spec") {
-        this.jasmineReportExpression = `const { SpecReporter } = require("jasmine-spec-reporter");`;
-        this.onPrepareExpression = `
-                        onPrepare: () => {
-                             jasmine.getEnv().addReporter(new SpecReporter({
-                                  spec: {
-                                    displayStacktrace: true
-                                  }
-                                }));
-                        },`;
+        this.jasmineReportExpression = `const {SpecReporter} = require("jasmine-spec-reporter");`;
+        this.onPrepareExpression =
+        `jasmine.getEnv().addReporter(new SpecReporter({
+            spec: {
+              displayStacktrace: true
+            }
+          }));
+          `;
       } else if (answers.reportType === "html") {
         this.jasmineReportExpression = `const HtmlScreenshotReporter = require("protractor-jasmine2-screenshot-reporter");`;
-        this.onPrepareExpression = `
-                        onPrepare: () => {
-                            jasmine.getEnv().addReporter(new HtmlScreenshotReporter({
-                                dest: 'target/screenshots',
-                                filename: 'protractor_jasmine_report.html'
-                              }));
-                    },`;
+        this.onPrepareExpression =
+        `jasmine.getEnv().addReporter(new HtmlScreenshotReporter({
+            dest: 'target/screenshots',
+            filename: 'protractor_jasmine_report.html'
+          }));
+              `;
       }
     }
     if (answers.framework === "mocha") {
       if (answers.transpilerType === "typescript") {
         this.tsconfigTypes.push("mocha");
+      }
+      if(answers.reportType === "html") {
+        this.mochaReportExpression = `"mochawesome",
+        reporterOptions : {
+            reportDir: "./reports",
+            reportFileName: "protractor_mocha_report",
+            enableCharts: true
+        }`;
+      } else { 
+        this.mochaReportExpression = answers.reportType;
       }
     }
     if (answers.framework === "cucumber") {
@@ -85,16 +95,15 @@ export class FileHelper {
       }
       if (answers.cucumberReportType === "html") {
         this.formatExpression = this.cukeJsonFormatter;
-        this.onCompleteExpression = `
-        onComplete: () => {
-            const cucumberReporterOptions = {
-                    theme: "bootstrap",
-                    jsonFile: "./reports/cucumber_report.json",
-                    output: process.cwd() + "./reports/cucumber_reporter.html",
-                    reportSuiteAsScenarios: true
-                    };
-            reporter.generate(cucumberReporterOptions);
-    },`;
+        this.onCompleteExpression =
+        `const cucumberReporterOptions = {
+                  theme: "bootstrap",
+                  jsonFile: "./reports/cucumber_report.json",
+                  output: process.cwd() + "./reports/cucumber_reporter.html",
+                  reportSuiteAsScenarios: true
+                  };
+          reporter.generate(cucumberReporterOptions);
+    `;
       }
     }
     if (answers.specPath) {
@@ -110,6 +119,13 @@ export class FileHelper {
     ) {
       this.createTSconfigfile(this.tsconfigTypes);
     }
+    
+    if (answers.transpilerType === "typescript") {
+      this.transpilerExpression = `"ts:ts-node/register"`                               
+    }
+    if(answers.transpilerType === "coffee-script") { 
+      this.transpilerExpression = `"coffee:coffee-script/register"`                 
+    }     
 
     if (answers.logging === "error") {
       this.logExpression = `require("protractor/built/logger").Logger.logLevel = 0`;
@@ -132,10 +148,12 @@ export class FileHelper {
       formatExpression: this.formatExpression,
       jasmineReportExpression: this.jasmineReportExpression,
       logExpression: this.logExpression,
+      mochaReportExpression: this.mochaReportExpression,
       onCompleteExpression: this.onCompleteExpression,
       onPrepareExpression: this.onPrepareExpression,
       seleniumAddressExpression: this.seleniumAddressExpression,
       seleniumServerJarExpression: this.seleniumServerJarExpression,
+      transpilerExpression: this.transpilerExpression,
     });
     fs.writeFileSync(
       path.join(process.cwd(), "./protractor.conf.js"),
@@ -157,7 +175,7 @@ ${chalk.green("$ protractor protractor.conf.js")}
     );
     fs.writeFileSync(
       path.join(process.cwd(), "./tsconfig.e2e.json"),
-      jsBeautify(JSON.stringify(tsconfig))
+      JSON.stringify(tsconfig, null, 4)
     );
   }
 }
