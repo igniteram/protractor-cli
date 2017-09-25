@@ -6,10 +6,12 @@ package-lock.json
 built/**/*.map
 lib/
 images/
+test/
 
 # dev files
 
 .gitignore
+.gitattributes
 .npmignore
 tsconfig.json
 tslint.json

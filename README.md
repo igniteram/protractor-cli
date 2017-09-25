@@ -1,5 +1,6 @@
-# <p align="center">Cliptor</p>
-
+<p align="center">
+<img src= "./images/cliptor.png" height=150 alt="cliptor.png"/>
+</p>
 <p align="center">
    An Interactive command line interface & config helper for ProtractorJS
 <p>
@@ -11,7 +12,7 @@
 Cliptor is an interactive command line interface which helps in setting up hassle free protractor projects. It takes user's inputs for generating protractor config files and also downloads the dependencies needed for writing e2e tests.
 
 <p>
-  <img src="./images/cliptor.gif" alt="cliptor"/>
+  <img src="./images/cliptor.gif" alt="cliptor.gif"/>
 </p>
 
 ### What Cliptor is trying to solve?
