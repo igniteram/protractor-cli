@@ -158,7 +158,11 @@ const questions: any[] = [
   {
     default: true,
     message: (answers: any) => {
-      return `Do you want to create ${answers.specs} folder?`;
+      let folderPath: string;
+      if(answers.specs.indexOf("*") > -1) {
+         folderPath = answers.specs.substring(0,answers.specs.indexOf("*"));
+      }
+      return `Do you want to create ${folderPath} folder?`;
     },
     name: "specPath",
     type: "confirm",
