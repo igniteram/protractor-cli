@@ -1,6 +1,6 @@
 {
   "name": "cliptor",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Protractor's Interactive CLI",
   "main": "built/cli.js",
   "repository": {
