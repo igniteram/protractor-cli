@@ -8,8 +8,8 @@ const tsconfig = require("../../templates/tsconfig.e2e.json");
 
 export class FileHelper {
   public static createDirectory(filepath: string) {
-    if(filepath.indexOf("*") > -1) {
-      filepath = filepath.substring(0, filepath.indexOf("*"))
+    if (filepath.indexOf("*") > -1) {
+      filepath = filepath.substring(0, filepath.indexOf("*"));
     }
     const dirname = path.join(process.cwd(), filepath);
     if (!fs.existsSync(dirname)) {
@@ -74,14 +74,14 @@ export class FileHelper {
       if (answers.transpilerType === "typescript") {
         this.tsconfigTypes.push("mocha");
       }
-      if(answers.reportType === "html") {
+      if (answers.reportType === "html") {
         this.mochaReportExpression = `"mochawesome",
         reporterOptions : {
             reportDir: "./reports",
             reportFileName: "protractor_mocha_report",
             enableCharts: true
         }`;
-      } else { 
+      } else {
         this.mochaReportExpression = answers.reportType;
       }
     }
@@ -119,13 +119,12 @@ export class FileHelper {
     ) {
       this.createTSconfigfile(this.tsconfigTypes);
     }
-    
     if (answers.transpilerType === "typescript") {
-      this.transpilerExpression = `"ts:ts-node/register"`                               
+      this.transpilerExpression = `"ts:ts-node/register"`;
     }
-    if(answers.transpilerType === "coffee-script") { 
-      this.transpilerExpression = `"coffee:coffee-script/register"`                 
-    }     
+    if (answers.transpilerType === "coffee-script") {
+      this.transpilerExpression = `"coffee:coffee-script/register"`;
+    }
 
     if (answers.logging === "error") {
       this.logExpression = `require("protractor/built/logger").Logger.logLevel = 0`;

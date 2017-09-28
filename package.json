@@ -11,7 +11,13 @@
     "cliptor": "bin/cliptor"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "clean": "rimraf built/",
+    "clean-build": "npm run clean && npm run build",
+    "lint":"tslint -c tslint.json 'lib/**/*.ts'",
+    "prepublish": "npm run clean-build",
+    "pretest": "npm run lint",
+    "test": "jest",
     "compile": "tsc -w"
   },
   "keywords": [
@@ -45,12 +51,33 @@
     "@types/commander": "^2.9.2",
     "@types/ejs": "^2.3.33",
     "@types/inquirer": "0.0.35",
+    "@types/jest": "^21.1.1",
     "@types/js-beautify": "0.0.31",
     "@types/mkdirp": "^0.5.1",
-    "@types/node": "^8.0.24"
+    "@types/node": "^8.0.24",
+    "jest": "^21.1.0",
+    "ts-jest": "^21.0.1",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2"
   },
   "typings": "built/index",
   "engines": {
     "node": ">=6.9.x"
+  },
+  "jest": {
+    "verbose": true,
+    "roots": [
+      "test/"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "testRegex": "/test/.*\\.(ts|js)$",
+    "testPathIgnorePatterns":["<rootDir>/built/lib", "<rootDir>/node_modules/"]
   }
 }

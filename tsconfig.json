@@ -10,11 +10,17 @@
     "outDir": "built/",
     "typeRoots": [ "./node_modules/@types","./built" ],
     "types": [
-      "node","inquirer","commander","ejs","mkdirp"
+      "node",
+      "inquirer",
+      "commander",
+      "ejs",
+      "mkdirp",
+      "jest"
     ]
   },
   "exclude": [
     "built",
-    "node_modules"
+    "node_modules",
+    "test"
   ]
 }

@@ -58,7 +58,7 @@ const questions: any[] = [
     message: "Environment variable for Browserstack username",
     name: "browserstackUser",
     type: "input",
-    when: (answers: any) => answers.services === "browserstack,"
+    when: (answers: any) => answers.services === "browserstack",
   },
   {
     default: "BROWSER_STACK_ACCESS_KEY",
@@ -159,8 +159,8 @@ const questions: any[] = [
     default: true,
     message: (answers: any) => {
       let folderPath: string;
-      if(answers.specs.indexOf("*") > -1) {
-         folderPath = answers.specs.substring(0,answers.specs.indexOf("*"));
+      if (answers.specs.indexOf("*") > -1) {
+         folderPath = answers.specs.substring(0, answers.specs.indexOf("*"));
       }
       return `Do you want to create ${folderPath} folder?`;
     },
