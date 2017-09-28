@@ -5,6 +5,14 @@
    An Interactive command line interface & config helper for ProtractorJS
 <p>
 
+<p align="center">
+<a href="https://circleci.com/gh/igniteram/Cliptor.js/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/Cliptor.js/tree/master.svg?style=shield"></a>
+<a href="https://david-dm.org/igniteram/Cliptor.js"><img alt="dependencies status" src="https://david-dm.org/igniteram/Cliptor.js/status.svg">
+<a href="https://github.com/facebook/jest"><img alt="JEST" src="https://img.shields.io/badge/tested_with-jest-99424f.svg">
+<a href="https://www.npmjs.com/package/cliptor"><img alt="NPM Status" src="https://img.shields.io/npm/v/cliptor.svg?style=flat"></a>
+<a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg">
+</p>
+
 ### <p align="center"> [About](#about) **|** [To Get Started](#to-get-started) **|** [Installation](#installation) **|** [Commands](#commands) </p>
 
 ## About
