@@ -1,24 +1,3 @@
-<style>
-div.images img{
-    margin:10px;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-
 <p align="center">
 <img src= "./images/cliptor.png" height=150 alt="cliptor.png"/>
 </p>
@@ -93,28 +72,24 @@ Cliptor supports all the major libraries and frameworks that **Protractor** curr
 
 Cliptor supports all three major browsers -
 
-<div class="images">
-<img src="./images/chrome.png" height=60>
-<img src="./images/firefox.jpg" height=60>
+<div class="images" >
+<img style="padding:0px 10px;" src="./images/chrome.png" height=60>
+<img style="padding:0px 10px;" src="./images/firefox.jpg" height=60>
 <img src="./images/IE.jpg" height=60>
 </div>
 
 ### Test Frameworks
 
-* [jasmine](https://jasmine.github.io/) (default)
-* [mocha](https://mochajs.org/)
-* [cucumber](https://github.com/cucumber/cucumber-js)
+<a href="https://jasmine.github.io/"><img style="padding:0px 10px;" src="./images/jasmine.png" height=60></a>
+<a href="https://mochajs.org/"><img style="padding:0px 10px;" src="./images/mocha.svg" height=60></a>
+<a href="https://github.com/cucumber/cucumber-js"><img style="padding:0px 10px;" src="./images/cucumberjs.png" height=60></a>
+
+Jasmine being the default framework. Mocha & Cucumber have good support as well!
  
- ### Test Environments 
-
- * **Local Machine** - It is your local test development environment
- * **Cloud Service** - If you want to develop and maintain your test scripts in cloud services like - **Sauce Labs** & **BrowserStack**.
- * **Remote Machine** - If you know the address of a remote machine where selenium server resides you could use this environment configuration.
-
 ### Transpilers
 
-<div class="images">
-<img src="./images/typescript.png" height=60>
+<div class="images" style="margin:10px">
+<img style="padding:0px 10px;" src="./images/typescript.png" height=60>
 <img src="./images/coffeeScript.png" height=70>
 </div>
 
@@ -126,6 +101,12 @@ You could use the typescript features by simply selecting your specific framewor
 Jasmine being the default framework , cliptor asks whether you would want to use typescript as a transpiler which then installs **typescript**, **jasmine types** and also generates **tsconfig.json** automatically!
 
 [Coffee-Script](http://coffeescript.org/) support has also been provided with **mocha** & **cucumber** frameworks. You could write your scripts using coffee-script and the above frameworks will auto-compile them. The best part is you don't have to do it manaully as cliptor does it for you!
+
+ ### Test Environments 
+
+ * **Local Machine** - It is your local test development environment
+ * **Cloud Service** - If you want to develop and maintain your test scripts in cloud services like - **Sauce Labs** & **BrowserStack**.
+ * **Remote Machine** - If you know the address of a remote machine where selenium server resides you could use this environment configuration.
 
 ### Logging
 
@@ -144,11 +125,6 @@ Cliptor installs & configures one of the popular & well maintained report module
 
 Framework | Report Types | Report Module 
 ---       | ---          | ---          
-| `Jasmine` |<br>`dot`</br><br>`spec`</br>  <br>`json`</br><br>`html`</br>|<br>Protractor's default dot console reporter</br><br>[jasmine-spec-reporter](https://github.com/bcaudan/jasmine-spec-reporter) for flashy console spec reporter</br><br>Protractor's `resultJsonOutputFile` config option generates json reports</br><br>[protractor-jasmine2-screenshot-reporter](protractor-jasmine2-screenshot-reporter) for html reports. </br>
-
-
-## Contributions
-
-## Attributions
-
-### Logo
+| `Jasmine` |<br>`dot`</br><br>`spec`</br>  <br>`json`</br><br>`html`</br>|<br>Protractor jasmine's default dot console reporter</br><br>[jasmine-spec-reporter](https://github.com/bcaudan/jasmine-spec-reporter) for flashy console spec reporter</br><br>Protractor's `resultJsonOutputFile` config option generates json reports</br><br>[protractor-jasmine2-screenshot-reporter](protractor-jasmine2-screenshot-reporter) for html reports. </br>
+| `Mocha` |<br>`dot`</br><br>`spec`</br>  <br>`json`</br><br>`html`</br>|<br>Mocha's default dot console reporter in mochaOpts</br><br>Built in spec console reporter </br><br>Built in mocha's json reporter</br><br>[Mochawesome](https://github.com/adamgruber/mochawesome) for html reports.
+| `cucumber` |<br>`progress`</br><br>`summary`</br>  <br>`json`</br><br>`html`</br>|<br>Cucumber's default progress console reporter</br><br>Summary console reporter</br><br>Json reporter which generates cucumber json reports</br><br>[cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter) for flashy html reports.
