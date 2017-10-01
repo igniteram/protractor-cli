@@ -1,8 +1,27 @@
+<style>
+div.images img{
+    margin:10px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
 <p align="center">
 <img src= "./images/cliptor.png" height=150 alt="cliptor.png"/>
 </p>
-
----
 
 <p align="center">
    <i><strong>An Interactive command line interface & config helper for ProtractorJS</strong></i>
@@ -68,16 +87,12 @@ This installs protractor & webdriver-manager globally, it also updates webdriver
 
 ## Library Support
 
-Cliptor supports s all the major libraries and frameworks that **Protractor** currently supports, let us have a look-
+Cliptor supports all the major libraries and frameworks that **Protractor** currently supports, let us have a look-
 
 ### Browser Support
 
 Cliptor supports all three major browsers -
-<style>
-div.images img{
-    margin:10px;
-}
-</style>
+
 <div class="images">
 <img src="./images/chrome.png" height=60>
 <img src="./images/firefox.jpg" height=60>
@@ -97,10 +112,12 @@ div.images img{
  * **Remote Machine** - If you know the address of a remote machine where selenium server resides you could use this environment configuration.
 
 ### Transpilers
+
 <div class="images">
 <img src="./images/typescript.png" height=60>
 <img src="./images/coffeeScript.png" height=70>
 </div>
+
 
 Since cliptor has been entirely written using [TypeScript](https://www.typescriptlang.org/). You would find extensive support for it. Protractor also has recently migrated to typescript.
 
@@ -124,12 +141,10 @@ One could refer this [StackOverFlow link](https://stackoverflow.com/questions/20
 
 Cliptor installs & configures one of the popular & well maintained report modules which could be integrated with protractor.
 
-Framework | Report Types | Report Module
----       | ---          | ---
-`Jasmine` | `dot`        | Protractor's default dot console reporter      
-          |`spec`        | [jasmine-spec-reporter](https://github.com/bcaudan/jasmine-spec-reporter) generates flashy console spec reporter
-          |`json`        | Protractor's `resultJsonOutputFile` config option generates json reports
-          |`html`       | [protractor-jasmine2-screenshot-reporter](protractor-jasmine2-screenshot-reporter) generates html reports.    
+
+Framework | Report Types | Report Module 
+---       | ---          | ---          
+| `Jasmine` |<br>`dot`</br><br>`spec`</br>  <br>`json`</br><br>`html`</br>|<br>Protractor's default dot console reporter</br><br>[jasmine-spec-reporter](https://github.com/bcaudan/jasmine-spec-reporter) for flashy console spec reporter</br><br>Protractor's `resultJsonOutputFile` config option generates json reports</br><br>[protractor-jasmine2-screenshot-reporter](protractor-jasmine2-screenshot-reporter) for html reports. </br>
 
 
 ## Contributions
