@@ -11,12 +11,10 @@
     "cliptor": "bin/cliptor"
   },
   "scripts": {
-    "prebuild": "npm run format",
     "build": "tsc",
     "clean": "rimraf built/",
     "clean-build": "npm run clean && npm run build",
-    "format": "clang-format -i --glob='+(lib|test)/**/*.ts'",
-    "lint": "tslint -c tslint.json 'lib/**/*.ts'",
+    "lint":"tslint -c tslint.json 'lib/**/*.ts'",
     "prepublish": "npm run clean-build",
     "pretest": "npm run lint",
     "test": "jest",
@@ -57,7 +55,6 @@
     "@types/js-beautify": "0.0.31",
     "@types/mkdirp": "^0.5.1",
     "@types/node": "^8.0.24",
-    "clang-format": "^1.0.55",
     "jest": "^21.1.0",
     "ts-jest": "^21.0.1",
     "tslint": "^5.7.0",
@@ -81,9 +78,6 @@
       "json"
     ],
     "testRegex": "/test/.*\\.(ts|js)$",
-    "testPathIgnorePatterns": [
-      "<rootDir>/built/lib",
-      "<rootDir>/node_modules/"
-    ]
+    "testPathIgnorePatterns":["<rootDir>/built/lib", "<rootDir>/node_modules/"]
   }
 }
