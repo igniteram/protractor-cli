@@ -46,7 +46,8 @@
     "ejs": "^2.5.7",
     "inquirer": "^3.2.2",
     "js-beautify": "^1.7.3",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "protractor": "^5.1.2"
   },
   "devDependencies": {
     "@types/chalk": "^0.4.31",

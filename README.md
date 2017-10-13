@@ -68,16 +68,6 @@ This installs protractor & webdriver-manager globally, it also updates webdriver
 
 Cliptor supports all the major libraries and frameworks that **Protractor** currently supports, let us have a look-
 
-### Browser Support
-
-Cliptor supports all three major browsers -
-
-<div class="images" >
-<img style="padding:0px 10px;" src="./images/chrome.png" height=60>
-<img style="padding:0px 10px;" src="./images/firefox.jpg" height=60>
-<img src="./images/IE.jpg" height=60>
-</div>
-
 ### Test Frameworks
 
 <a href="https://jasmine.github.io/"><img style="padding:0px 10px;" src="./images/jasmine.png" height=60></a>
@@ -88,7 +78,7 @@ Jasmine being the default framework. Mocha & Cucumber have good support as well!
  
 ### Transpilers
 
-<div class="images" style="margin:10px">
+<div>
 <img style="padding:0px 10px;" src="./images/typescript.png" height=60>
 <img src="./images/coffeeScript.png" height=70>
 </div>
@@ -101,6 +91,16 @@ You could use the typescript features by simply selecting your specific framewor
 Jasmine being the default framework , cliptor asks whether you would want to use typescript as a transpiler which then installs **typescript**, **jasmine types** and also generates **tsconfig.json** automatically!
 
 [Coffee-Script](http://coffeescript.org/) support has also been provided with **mocha** & **cucumber** frameworks. You could write your scripts using coffee-script and the above frameworks will auto-compile them. The best part is you don't have to do it manaully as cliptor does it for you!
+
+### Browser Configuration
+
+Cliptor supports all three major browser configuration -
+
+<div class="images" >
+<img style="float:right margin:0px 10px;" src="./images/chrome.png" height=50>
+<img style="padding:0px 10px;" src="./images/firefox.jpg" height=50>
+<img src="./images/IE.jpg" height=50>
+</div>
 
  ### Test Environments 
 
@@ -120,7 +120,7 @@ One could refer this [StackOverFlow link](https://stackoverflow.com/questions/20
 
 ### Reports
 
-Cliptor installs & configures one of the popular & well maintained report modules which could be integrated with protractor.
+Cliptor installs & configures popular & well maintained report modules which could be integrated with protractor.
 
 
 Framework | Report Types | Report Module 
