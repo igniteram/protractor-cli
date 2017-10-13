@@ -46,12 +46,12 @@ export class FileHelper {
     if (answers.framework === 'jasmine') {
       if (answers.jasmineTStranspiler) {
         this.tsconfigTypes.push('jasmine', 'jasminewd2');
-        this.beforeLaunchExpression = `require("ts-node").register({
-            project: "./tsconfig.e2e.json"
+        this.beforeLaunchExpression = `require('ts-node').register({
+            project: './tsconfig.e2e.json'
          });`;
       }
       if (answers.reportType === 'spec') {
-        this.jasmineReportExpression = `const {SpecReporter} = require("jasmine-spec-reporter");`;
+        this.jasmineReportExpression = `const {SpecReporter} = require('jasmine-spec-reporter');`;
         this.onPrepareExpression = `jasmine.getEnv().addReporter(new SpecReporter({
             spec: {
               displayStacktrace: true
@@ -60,7 +60,7 @@ export class FileHelper {
           `;
       } else if (answers.reportType === 'html') {
         this.jasmineReportExpression =
-            `const HtmlScreenshotReporter = require("protractor-jasmine2-screenshot-reporter");`;
+            `const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');`;
         this.onPrepareExpression = `jasmine.getEnv().addReporter(new HtmlScreenshotReporter({
             dest: 'target/screenshots',
             filename: 'protractor_jasmine_report.html'
@@ -73,10 +73,10 @@ export class FileHelper {
         this.tsconfigTypes.push('mocha');
       }
       if (answers.reportType === 'html') {
-        this.mochaReportExpression = `"mochawesome",
+        this.mochaReportExpression = `'mochawesome',
         reporterOptions : {
-            reportDir: "./reports",
-            reportFileName: "protractor_mocha_report",
+            reportDir: './reports',
+            reportFileName: 'protractor_mocha_report',
             enableCharts: true
         }`;
       } else {
@@ -94,9 +94,9 @@ export class FileHelper {
       if (answers.cucumberReportType === 'html') {
         this.formatExpression = this.cukeJsonFormatter;
         this.onCompleteExpression = `const cucumberReporterOptions = {
-                  theme: "bootstrap",
-                  jsonFile: "./reports/cucumber_report.json",
-                  output: process.cwd() + "./reports/cucumber_reporter.html",
+                  theme: 'bootstrap',
+                  jsonFile: './reports/cucumber_report.json',
+                  output: process.cwd() + './reports/cucumber_reporter.html',
                   reportSuiteAsScenarios: true
                   };
           reporter.generate(cucumberReporterOptions);
@@ -114,18 +114,18 @@ export class FileHelper {
       this.createTSconfigfile(this.tsconfigTypes);
     }
     if (answers.transpilerType === 'typescript') {
-      this.transpilerExpression = `"ts:ts-node/register"`;
+      this.transpilerExpression = `'ts:ts-node/register'`;
     }
     if (answers.transpilerType === 'coffee-script') {
-      this.transpilerExpression = `"coffee:coffee-script/register"`;
+      this.transpilerExpression = `'coffee:coffee-script/register'`;
     }
 
     if (answers.logging === 'error') {
-      this.logExpression = `require("protractor/built/logger").Logger.logLevel = 0`;
+      this.logExpression = `require('protractor/built/logger').Logger.logLevel = 0`;
     } else if (answers.logging === 'warn') {
-      this.logExpression = `require("protractor/built/logger").Logger.logLevel = 1`;
+      this.logExpression = `require('protractor/built/logger').Logger.logLevel = 1`;
     } else if (answers.logging === 'debug') {
-      this.logExpression = `require("protractor/built/logger").Logger.logLevel = 3`;
+      this.logExpression = `require('protractor/built/logger').Logger.logLevel = 3`;
     }
 
     if (answers.createReportPath) {
