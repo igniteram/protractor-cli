@@ -7,6 +7,7 @@
     "no-duplicate-variable": true,
     "no-var-keyword": true,
     "no-var-requires": false,
+    "quotemark": [true, "single", "avoid-escape"],
     "semicolon": [true],
     "variable-name": [true, "ban-keywords"],
     "no-console": [false],
