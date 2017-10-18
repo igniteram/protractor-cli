@@ -75,7 +75,7 @@ Cliptor supports all the major libraries and frameworks that **Protractor** curr
 <a href="https://github.com/cucumber/cucumber-js"><img style="padding:0px 10px;" src="./images/cucumberjs.png" height=60></a>
 
 Jasmine being the default framework. Mocha & Cucumber have good support as well!
- 
+
 ### Transpilers
 
 <div>
@@ -102,15 +102,16 @@ Cliptor supports all three major browser configuration -
 <img src="./images/IE.jpg" height=50>
 </div>
 
- ### Test Environments 
+### Test Environments
 
- * **Local Machine** - It is your local test development environment
- * **Cloud Service** - If you want to develop and maintain your test scripts in cloud services like - **Sauce Labs** & **BrowserStack**.
- * **Remote Machine** - If you know the address of a remote machine where selenium server resides you could use this environment configuration.
+* **Local Machine** - It is your local test development environment
+* **Cloud Service** - If you want to develop and maintain your test scripts in cloud services like - **Sauce Labs** & **BrowserStack**.
+* **Remote Machine** - If you know the address of a remote machine where selenium server resides you could use this environment configuration.
 
 ### Logging
 
-Protractor has 4 types of logging mechanism - 
+Protractor has 4 types of logging mechanism -
+
 * **info** (default)
 * **warn**
 * **debug**
@@ -122,9 +123,28 @@ One could refer this [StackOverFlow link](https://stackoverflow.com/questions/20
 
 Cliptor installs & configures popular & well maintained report modules which could be integrated with protractor.
 
-
-Framework | Report Types | Report Module 
+Framework | Report Types | Report Module
 ---       | ---          | ---          
 | `Jasmine` |<br>`dot`</br><br>`spec`</br>  <br>`json`</br><br>`html`</br>|<br>Protractor jasmine's default dot console reporter</br><br>[jasmine-spec-reporter](https://github.com/bcaudan/jasmine-spec-reporter) for flashy console spec reporter</br><br>Protractor's `resultJsonOutputFile` config option generates json reports</br><br>[protractor-jasmine2-screenshot-reporter](protractor-jasmine2-screenshot-reporter) for html reports. </br>
 | `Mocha` |<br>`dot`</br><br>`spec`</br>  <br>`json`</br><br>`html`</br>|<br>Mocha's default dot console reporter in mochaOpts</br><br>Built in spec console reporter </br><br>Built in mocha's json reporter</br><br>[Mochawesome](https://github.com/adamgruber/mochawesome) for html reports.
-| `cucumber` |<br>`progress`</br><br>`summary`</br>  <br>`json`</br><br>`html`</br>|<br>Cucumber's default progress console reporter</br><br>Summary console reporter</br><br>Json reporter which generates cucumber json reports</br><br>[cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter) for flashy html reports.
+| `cucumber` |<br>`progress`</br><br>`summary`</br>  <br>`json`</br><br>`html`</br>|<br>Cucumber's default progress console reporter</br><br>Summary console reporter</br><br>Json reporter which generates cucumber json reports</br><br>[cucumber-html-reporter](https://github.com/gkushang/cucumber-html-reporter) for html reports.
+
+### Contributions
+
+For contributors who want to improve this repo by contributing some code, reporting bugs, issues or improving documentation - PR's are highly welcome, please maintain the coding style , folder structure , detailed description of documentation and bugs/issues with examples if possible.
+
+#### Development Hints
+
+```
+git clone https://github.com/igniteram/Cliptor.js.git
+cd Cliptor.js
+npm link
+```
+
+`npm link` is very similar to `npm install -g` except that instead of downloading the package from the repo, the just cloned Cliptor folder becomes the global package.
+
+`cliptor` binary will be available to you globally and any changes you make in this folder could be verified by running binary from anywhere.
+
+### Attributions
+
+Cliptor was mainly inspired by [WebdriverIO’s](https://github.com/webdriverio/webdriverio) cli. I would also like to give credit to the Angular’s Protractor community for creating such a wonderful project which inspired this project development.
