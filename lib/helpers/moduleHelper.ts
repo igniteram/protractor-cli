@@ -1,13 +1,13 @@
 import {NpmUtil} from '../utils/npmUtil';
 
+// install protractor by default as save dependency
+const devModules: string[] = ['protractor'];
+
 const installModules = (answers: any) => {
-  // install protractor by default as save dependency
-  const saveModules: string[] = ['protractor'];
-  const devModules: string[] = [];
+
   if (answers.framework === 'jasmine') {
     if (answers.jasmineTStranspiler) {
-      saveModules.push('typescript');
-      devModules.push('@types/node', '@types/jasmine', 'ts-node');
+      devModules.push('typescript', '@types/node', '@types/jasmine', 'ts-node');
     }
     if (answers.reportType === 'spec') {
       devModules.push('jasmine-spec-reporter');
@@ -19,10 +19,9 @@ const installModules = (answers: any) => {
   if (answers.framework === 'mocha') {
     if (answers.transpiler) {
       if (answers.transpilerType === 'typescript') {
-        saveModules.push('typescript');
-        devModules.push('@types/node', '@types/mocha', 'ts-node');
+        devModules.push('typescript', '@types/node', '@types/mocha', 'ts-node');
       } else {
-        saveModules.push('coffee-script');
+        devModules.push('coffee-script');
       }
     }
     if (answers.reportType === 'html') {
@@ -33,22 +32,16 @@ const installModules = (answers: any) => {
     devModules.push('cucumber', 'protractor-cucumber-framework');
     if (answers.transpiler) {
       if (answers.transpilerType === 'typescript') {
-        saveModules.push('typescript');
-        devModules.push('@types/node', '@types/cucumber', 'ts-node');
+        devModules.push('typescript', '@types/node', '@types/cucumber', 'ts-node');
       } else {
-        saveModules.push('coffee-script');
+        devModules.push('coffee-script');
       }
     }
     if (answers.cucumberReportType === 'html') {
       devModules.push('cucumber-html-reporter');
     }
   }
-  if (saveModules.length > 0) {
-    NpmUtil.checkPackageJson();
-    NpmUtil.installPkgs('Installing save dependencies...', saveModules, {
-      save: true,
-    });
-  }
+
   if (devModules.length > 0) {
     NpmUtil.checkPackageJson();
     NpmUtil.installPkgs('Installing dev dependencies...', devModules, {
@@ -60,4 +53,4 @@ const installModules = (answers: any) => {
 /**
  * Public Interface
  */
-export {installModules};
+export {installModules, devModules};
