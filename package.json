@@ -1,6 +1,6 @@
 {
   "name": "cliptor",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Protractor's Interactive CLI",
   "main": "built/cli.js",
   "repository": {
@@ -44,7 +44,7 @@
     "commander": "^2.11.0",
     "cross-spawn": "^5.1.0",
     "ejs": "^2.5.7",
-    "inquirer": "^3.2.2",
+    "inquirer": "^4.0.1",
     "js-beautify": "^1.7.3",
     "mkdirp": "^0.5.1"
   },
@@ -56,12 +56,12 @@
     "@types/jest": "^21.1.1",
     "@types/js-beautify": "0.0.31",
     "@types/mkdirp": "^0.5.1",
-    "@types/node": "^8.0.24",
+    "@types/node": "^8.0.54",
     "clang-format": "^1.0.55",
     "jest": "^21.1.0",
     "ts-jest": "^21.0.1",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.6.2"
   },
   "typings": "built/index",
   "engines": {

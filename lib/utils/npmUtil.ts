@@ -43,6 +43,27 @@ export class NpmUtil {
         spawn.sync('npm', cliArgs, {stdio: 'pipe'});
       }
 
+  public static unInstallPkgs =
+      (des: any, packages: string[], opts: any) => {
+        const args: string[] = [];
+        if (opts.save) {
+          args.push('-S');
+        }
+        if (opts.saveDev) {
+          args.push('-D');
+        }
+        if (opts.global) {
+          args.push('-g');
+        }
+        const cliArgs: string[] = ['uninstall'].concat(args, packages);
+        if (typeof des === 'string') {
+          process.stdout.write('\n' + chalk.yellow(des) + '\n');
+        } else {
+          process.stdout.write('');
+        }
+        spawn.sync('npm', cliArgs, {stdio: 'pipe'});
+      }
+
   public static updateWebdriver = () => {
     process.stdout.write(
         chalk.yellow('\nDownloading chrome, firefox & internet explorer drivers...\n'));
