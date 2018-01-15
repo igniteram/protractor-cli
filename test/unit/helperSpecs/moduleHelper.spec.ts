@@ -1,10 +1,18 @@
 import {devModules, installModules} from '../../../lib/helpers/moduleHelper';
 import {NpmUtil} from '../../../lib/utils/npmUtil';
 
-const removeDevModule = (element: string) => {
+const removeDevModule =  (element: string) => {
   const devIndex = devModules.indexOf(element);
   if (devModules.indexOf(element) > -1) {
-    devModules.splice(devIndex, 1);
+        devModules.splice(devIndex, 1);
+      }
+};
+
+const removeDevModules = (elements: any) => {
+  if (Array.isArray(elements)) {
+    elements.forEach((element) => {
+      removeDevModule(element);
+    });
   }
 };
 
@@ -18,13 +26,10 @@ describe('To test the install module function and verify its installation proces
     const mockFn = jest.fn(installModules);
     mockFn(answers);
     expect(devModules).toEqual([
-      'protractor', 'typescript', '@types/node', '@types/jasmine', 'ts-node'
+      'protractor', 'typescript', '@types/node', '@types/jasmine', 'ts-node',
     ]);
     NpmUtil.unInstallPkgs('', ['protractor', '@types/jasmine', 'ts-node'], {saveDev: true});
-    removeDevModule('@types/jasmine');
-    removeDevModule('typescript');
-    removeDevModule('@types/node');
-    removeDevModule('ts-node');
+    removeDevModules(['@types/jasmine', 'typescript', '@types/node', 'ts-node']);
 
   });
 
@@ -64,13 +69,11 @@ describe('To test the install module function and verify its installation proces
     mockFn(answers);
     expect(devModules).not.toContain('coffee-script');
     expect(devModules).toEqual([
-      'protractor', 'typescript', '@types/node', '@types/mocha', 'ts-node'
+      'protractor', 'typescript', '@types/node', '@types/mocha', 'ts-node',
     ]);
     NpmUtil.unInstallPkgs('', ['protractor', '@types/mocha', 'ts-node'], {saveDev: true});
-    removeDevModule('typescript');
-    removeDevModule('@types/node');
-    removeDevModule('@types/mocha');
-    removeDevModule('ts-node');
+    removeDevModules(['typescript', '@types/node', '@types/mocha', 'ts-node']);
+
   });
 
   it('Verify module installation if framework is mocha with coffee-script', () => {
@@ -112,8 +115,7 @@ describe('To test the install module function and verify its installation proces
     expect(devModules).not.toContain('coffee-script');
     expect(devModules).toEqual(['protractor', 'cucumber', 'protractor-cucumber-framework']);
     NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
-    removeDevModule('cucumber');
-    removeDevModule('protractor-cucumber-framework');
+    removeDevModules(['cucumber', 'protractor-cucumber-framework']);
 
   });
 
@@ -139,12 +141,7 @@ describe('To test the install module function and verify its installation proces
         '',
         ['protractor', 'cucumber', 'protractor-cucumber-framework', '@types/cucumber', 'ts-node'],
         {saveDev: true});
-    removeDevModule('typescript');
-    removeDevModule('cucumber');
-    removeDevModule('protractor-cucumber-framework');
-    removeDevModule('@types/node');
-    removeDevModule('@types/cucumber');
-    removeDevModule('ts-node');
+    removeDevModules(['typescript', 'cucumber', 'protractor-cucumber-framework', '@types/node', '@types/cucumber', 'ts-node']);
   });
 
   it('Verify module installation if framework is cucumber with coffee-script', () => {
@@ -157,12 +154,10 @@ describe('To test the install module function and verify its installation proces
     mockFn(answers);
     expect(devModules).not.toContain('typescript');
     expect(devModules).toEqual([
-      'protractor', 'cucumber', 'protractor-cucumber-framework', 'coffee-script'
+      'protractor', 'cucumber', 'protractor-cucumber-framework', 'coffee-script',
     ]);
     NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
-    removeDevModule('cucumber');
-    removeDevModule('protractor-cucumber-framework');
-    removeDevModule('coffee-script');
+    removeDevModules(['cucumber', 'protractor-cucumber-framework', 'coffee-script']);
   });
 
   it('Verify module installation if framework is cucumber with html report', () => {
@@ -176,8 +171,6 @@ describe('To test the install module function and verify its installation proces
     expect(devModules).not.toContain('coffee-script');
     expect(devModules).toContain('cucumber-html-reporter');
     NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
-    removeDevModule('cucumber');
-    removeDevModule('protractor-cucumber-framework');
-    removeDevModule('cucumber-html-reporter');
+    removeDevModules(['cucumber', 'protractor-cucumber-framework', 'cucumber-html-reporter']);
   });
 });
