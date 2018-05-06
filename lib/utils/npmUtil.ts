@@ -1,5 +1,5 @@
 const spawn = require('cross-spawn');
-import * as chalk from 'chalk';
+const chalk = require('chalk');
 import * as fs from 'fs';
 import * as path from 'path';
 

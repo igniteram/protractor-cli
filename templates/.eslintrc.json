@@ -1,0 +1,36 @@
+{
+    "env": {
+        "node": true
+    },
+    "plugins": [
+        "protractor"
+    ],
+    "extends": "plugin:protractor/recommended",
+    "rules": {
+        "indent": [
+            "error",
+            2,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "complexity": [
+            "error",
+            {
+                "max": 9
+            }
+        ]
+    }
+}
