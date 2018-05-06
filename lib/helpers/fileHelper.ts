@@ -1,10 +1,12 @@
-import * as chalk from 'chalk';
+const chalk = require('chalk');
 import * as ejs from 'ejs';
 import * as fs from 'fs';
 import * as jsBeautify from 'js-beautify';
 import * as mkdirp from 'mkdirp';
 import * as path from 'path';
+const eslint = require('../../templates/.eslintrc.json');
 const tsconfig = require('../../templates/tsconfig.e2e.json');
+const tslint = require('../../templates/tslint.json');
 
 export class FileHelper {
   public static createDirectory(filepath: string) {
@@ -44,7 +46,7 @@ export class FileHelper {
       this.seleniumAddressExpression = `seleniumAddress: '${answers.host}',`;
     }
     if (answers.framework === 'jasmine') {
-      if (answers.jasmineTStranspiler) {
+      if (answers.transpilerType === 'typescript') {
         this.tsconfigTypes.push('jasmine', 'jasminewd2');
         this.beforeLaunchExpression = `require('ts-node').register({
             project: './tsconfig.e2e.json'
@@ -71,6 +73,9 @@ export class FileHelper {
     if (answers.framework === 'mocha') {
       if (answers.transpilerType === 'typescript') {
         this.tsconfigTypes.push('mocha');
+        this.transpilerExpression = `'ts:ts-node/register'`;
+      } else if (answers.transpilerType === 'coffee-script') {
+        this.transpilerExpression = `'coffee:coffee-script/register'`;
       }
       if (answers.reportType === 'html') {
         this.mochaReportExpression = `'mochawesome',
@@ -86,6 +91,9 @@ export class FileHelper {
     if (answers.framework === 'cucumber') {
       if (answers.transpilerType === 'typescript') {
         this.tsconfigTypes.push('cucumber');
+        this.transpilerExpression = `'ts:ts-node/register'`;
+      } else if (answers.transpilerType === 'coffee-script') {
+        this.transpilerExpression = `'coffee:coffee-script/register'`;
       }
       this.formatExpression = answers.cucumberReportType;
       if (answers.cucumberReportType === 'json') {
@@ -110,16 +118,15 @@ export class FileHelper {
       FileHelper.createDirectory(answers.specs);
       FileHelper.createDirectory(answers.stepDefinitions);
     }
-    if (answers.jasmineTStranspiler || answers.transpilerType === 'typescript') {
+    if (answers.transpilerType === 'typescript') {
       this.createTSconfigfile(this.tsconfigTypes);
     }
-    if (answers.transpilerType === 'typescript') {
-      this.transpilerExpression = `'ts:ts-node/register'`;
+    if (answers.linter === 'tslint') {
+      this.createTSLintFile();
     }
-    if (answers.transpilerType === 'coffee-script') {
-      this.transpilerExpression = `'coffee:coffee-script/register'`;
+    if (answers.linter === 'eslint-plugin-protractor') {
+      this.createESLintRCFile();
     }
-
     if (answers.logging === 'error') {
       this.logExpression = `require('protractor/built/logger').Logger.logLevel = 0`;
     } else if (answers.logging === 'warn') {
@@ -127,7 +134,6 @@ export class FileHelper {
     } else if (answers.logging === 'debug') {
       this.logExpression = `require('protractor/built/logger').Logger.logLevel = 3`;
     }
-
     if (answers.createReportPath) {
       FileHelper.createDirectory(answers.reportPath);
     }
@@ -160,5 +166,13 @@ ${chalk.green('$ protractor protractor.conf.js')}
     tsconfig.compilerOptions.types = tsconfig.compilerOptions.types.concat(options);
     fs.writeFileSync(
         path.join(process.cwd(), './tsconfig.e2e.json'), JSON.stringify(tsconfig, null, 4));
+  }
+
+  private createTSLintFile() {
+    fs.writeFileSync(path.join(process.cwd(), './tslint.json'), JSON.stringify(tslint, null, 4));
+  }
+
+  private createESLintRCFile() {
+    fs.writeFileSync(path.join(process.cwd(), './.eslintrc.json'), JSON.stringify(eslint, null, 4));
   }
 }

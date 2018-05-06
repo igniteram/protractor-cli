@@ -1,6 +1,7 @@
 const browsers = ['chrome', 'firefox', 'internet explorer'];
 const cloudServices = ['sauce labs', 'browserstack'];
 const frameworks = ['jasmine', 'mocha', 'cucumber'];
+const linters = ['eslint-plugin-protractor', 'tslint'];
 const logType = ['info', 'error', 'warn', 'debug'];
 const reportTypes = ['dot', 'spec', 'json', 'html'];
 const cucumberReportTypes = ['progress', 'summary', 'json', 'html'];
@@ -112,17 +113,9 @@ const questions: any[] = [
   },
   {
     default: true,
-    message: 'Do you want to use typescript transpiler?',
-    name: 'jasmineTStranspiler',
-    type: 'confirm',
-    when: (answers: any) => answers.framework === 'jasmine',
-  },
-  {
-    default: true,
     message: 'Do you want to use a transpiler?',
     name: 'transpiler',
     type: 'confirm',
-    when: (answers: any) => answers.framework.match(/(mocha|cucumber)/),
   },
   {
     choices: transpilers,
@@ -134,7 +127,7 @@ const questions: any[] = [
   },
   {
     default: (answers: any) => {
-      if (answers.jasmineTStranspiler || answers.transpilerType === 'typescript') {
+      if (answers.transpilerType === 'typescript') {
         return './test/specs/**/*.ts';
       } else if (answers.transpilerType === 'coffee-script') {
         return './test/specs/**/*.coffee';
@@ -197,6 +190,14 @@ const questions: any[] = [
     message: 'Level of logging verbosity:',
     name: 'logging',
     type: 'list',
+  },
+  {
+    choices: linters,
+    default: true,
+    message: 'Please select the following linters to install:',
+    name: 'linter',
+    type: 'list',
+    when: (answers: any) => answers.transpilerType !== 'coffee-script',
   },
   {
     default: true,

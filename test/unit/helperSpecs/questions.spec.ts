@@ -2,7 +2,6 @@ import {questions} from '../../../lib/helpers/questions';
 const totalQuestions: number = questions.length;
 
 describe('To test the questions object and verify its contents', () => {
-
   it('should verify the length of questions', () => {
     expect(questions).toHaveLength(totalQuestions);
   });
@@ -160,122 +159,112 @@ describe('To test the questions object and verify its contents', () => {
     expect(questions[13].default).toBe('jasmine');
     expect(questions[13].type).toBe('list');
   });
-
-  it('should verify jasmineTStranspiler object', () => {
-    expect(questions[14].name).toBe('jasmineTStranspiler');
-    expect(questions[14].message).toBe('Do you want to use typescript transpiler?');
+  it('should verify transpiler object', () => {
+    expect(questions[14].name).toBe('transpiler');
+    expect(questions[14].message).toBe('Do you want to use a transpiler?');
     expect(questions[14].default).toBe(true);
     expect(questions[14].type).toBe('confirm');
-    const answers = {
-      framework: 'jasmine',
-    };
-    expect(questions[14].when(answers)).toBe(true);
-  });
-
-  it('should verify transpiler object', () => {
-    expect(questions[15].name).toBe('transpiler');
-    expect(questions[15].message).toBe('Do you want to use a transpiler?');
-    expect(questions[15].default).toBe(true);
-    expect(questions[15].type).toBe('confirm');
-    const answers = {
-      framework: 'mocha',
-    };
-    expect(questions[15].when(answers)).toContain('mocha');
-    answers.framework = 'cucumber';
-    expect(questions[15].when(answers)).toContain('cucumber');
   });
 
   it('should verify transpilerType object', () => {
-    expect(questions[16].choices).toEqual(['typescript', 'coffee-script']);
-    expect(questions[16].name).toBe('transpilerType');
-    expect(questions[16].message).toBe('Please select the transpiler:');
-    expect(questions[16].default).toBe('typescript');
-    expect(questions[16].type).toBe('list');
+    expect(questions[15].choices).toEqual(['typescript', 'coffee-script']);
+    expect(questions[15].name).toBe('transpilerType');
+    expect(questions[15].message).toBe('Please select the transpiler:');
+    expect(questions[15].default).toBe('typescript');
+    expect(questions[15].type).toBe('list');
     const answers = {
       transpiler: true,
     };
-    expect(questions[16].when(answers)).toBe(true);
+    expect(questions[15].when(answers)).toBe(true);
   });
 
   it('should verify specs object', () => {
-    expect(questions[17].name).toBe('specs');
-    expect(questions[17].message).toBe('Where are your test specs located?');
-    expect(questions[17].type).toBe('input');
+    expect(questions[16].name).toBe('specs');
+    expect(questions[16].message).toBe('Where are your test specs located?');
+    expect(questions[16].type).toBe('input');
     const answers = {
       framework: 'jasmine',
-      jasmineTStranspiler: 'typescript',
       transpilerType: 'typescript',
     };
-    expect(questions[17].default(answers)).toBe('./test/specs/**/*.ts');
-    delete answers.jasmineTStranspiler;
+    expect(questions[16].default(answers)).toBe('./test/specs/**/*.ts');
     answers.transpilerType = 'coffee-script';
-    expect(questions[17].default(answers)).toBe('./test/specs/**/*.coffee');
-    delete answers.jasmineTStranspiler;
+    expect(questions[16].default(answers)).toBe('./test/specs/**/*.coffee');
     delete answers.transpilerType;
-    expect(questions[17].default(answers)).toBe('./test/specs/**/*.js');
+    expect(questions[16].default(answers)).toBe('./test/specs/**/*.js');
+    expect(questions[16].when(answers)).toContain('jasmine');
+    answers.framework = 'mocha';
+    expect(questions[16].when(answers)).toContain('mocha');
+  });
+
+  it('should verify specPath object', () => {
+    expect(questions[17].name).toBe('specPath');
+    expect(questions[17].default).toBe(true);
+    expect(questions[17].type).toBe('confirm');
+    const answers = {
+      framework: 'jasmine',
+      specs: './tests/**/*.js',
+    };
+    expect(questions[17].message(answers)).toBe('Do you want to create ./tests/ folder?');
     expect(questions[17].when(answers)).toContain('jasmine');
     answers.framework = 'mocha';
     expect(questions[17].when(answers)).toContain('mocha');
   });
 
-  it('should verify specPath object', () => {
-    expect(questions[18].name).toBe('specPath');
-    expect(questions[18].default).toBe(true);
-    expect(questions[18].type).toBe('confirm');
-    const answers = {
-      framework: 'jasmine',
-      specs: './tests/**/*.js',
-    };
-    expect(questions[18].message(answers)).toBe('Do you want to create ./tests/ folder?');
-    expect(questions[18].when(answers)).toContain('jasmine');
-    answers.framework = 'mocha';
-    expect(questions[18].when(answers)).toContain('mocha');
-  });
-
   it('should verify feature files object', () => {
-    expect(questions[19].name).toBe('specs');
-    expect(questions[19].default).toBe('./features/**/*.feature');
-    expect(questions[19].type).toBe('input');
-    expect(questions[19].message).toBe('Where are your feature files located?');
+    expect(questions[18].name).toBe('specs');
+    expect(questions[18].default).toBe('./features/**/*.feature');
+    expect(questions[18].type).toBe('input');
+    expect(questions[18].message).toBe('Where are your feature files located?');
     const answers = {
       framework: 'cucumber',
     };
-    expect(questions[19].when(answers)).toBe(true);
+    expect(questions[18].when(answers)).toBe(true);
   });
 
   it('should verify stepDefinitions object', () => {
-    expect(questions[20].name).toBe('stepDefinitions');
+    expect(questions[19].name).toBe('stepDefinitions');
     const answers = {
       framework: 'cucumber',
       transpilerType: 'typescript',
     };
-    expect(questions[20].default(answers)).toBe('./features/stepDefinitions/**/*.ts');
+    expect(questions[19].default(answers)).toBe('./features/stepDefinitions/**/*.ts');
     answers.transpilerType = 'coffee-script';
-    expect(questions[20].default(answers)).toBe('./features/stepDefinitions/**/*.coffee');
+    expect(questions[19].default(answers)).toBe('./features/stepDefinitions/**/*.coffee');
     delete answers.transpilerType;
-    expect(questions[20].default(answers)).toBe('./features/stepDefinitions/**/*.js');
-    expect(questions[20].type).toBe('input');
-    expect(questions[20].message).toBe('Where are your step definitions located?');
-    expect(questions[20].when(answers)).toBe(true);
+    expect(questions[19].default(answers)).toBe('./features/stepDefinitions/**/*.js');
+    expect(questions[19].type).toBe('input');
+    expect(questions[19].message).toBe('Where are your step definitions located?');
+    expect(questions[19].when(answers)).toBe(true);
   });
 
   it('should verify featurePath object', () => {
-    expect(questions[21].name).toBe('featurePath');
-    expect(questions[21].default).toBe(true);
-    expect(questions[21].type).toBe('confirm');
-    expect(questions[21].message).toBe('Do you want to create the above folders?');
+    expect(questions[20].name).toBe('featurePath');
+    expect(questions[20].default).toBe(true);
+    expect(questions[20].type).toBe('confirm');
+    expect(questions[20].message).toBe('Do you want to create the above folders?');
     const answers = {
       framework: 'cucumber',
     };
-    expect(questions[21].when(answers)).toBe(true);
+    expect(questions[20].when(answers)).toBe(true);
   });
 
   it('should verify logging object', () => {
-    expect(questions[22].choices).toEqual(['info', 'error', 'warn', 'debug']);
-    expect(questions[22].name).toBe('logging');
-    expect(questions[22].default).toBe('info');
+    expect(questions[21].choices).toEqual(['info', 'error', 'warn', 'debug']);
+    expect(questions[21].name).toBe('logging');
+    expect(questions[21].default).toBe('info');
+    expect(questions[21].type).toBe('list');
+    expect(questions[21].message).toBe('Level of logging verbosity:');
+  });
+
+  it('should verify linters objects', () => {
+    expect(questions[22].name).toBe('linter');
+    expect(questions[22].default).toBe(true);
     expect(questions[22].type).toBe('list');
-    expect(questions[22].message).toBe('Level of logging verbosity:');
+    expect(questions[22].message).toBe('Please select the following linters to install:');
+    const answers = {
+      transpilerType: 'typescript',
+    };
+    expect(questions[22].when(answers)).not.toBe('coffee-script');
   });
 
   it('should verify reports objects', () => {
@@ -335,5 +324,4 @@ describe('To test the questions object and verify its contents', () => {
     expect(questions[27].message(answers)).toBe('Do you want to create ./reports folder?');
     expect(questions[27].when(answers)).toBe(true);
   });
-
 });

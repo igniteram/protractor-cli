@@ -1,13 +1,14 @@
 import {NpmUtil} from '../utils/npmUtil';
 
-// install protractor by default as save dependency
+// install protractor by default as dev dependency
 const devModules: string[] = ['protractor'];
 
 const installModules = (answers: any) => {
-
   if (answers.framework === 'jasmine') {
-    if (answers.jasmineTStranspiler) {
+    if (answers.transpilerType === 'typescript') {
       devModules.push('typescript', '@types/node', '@types/jasmine', 'ts-node');
+    } else if (answers.transpilerType === 'coffee-script') {
+      devModules.push('coffee-script');
     }
     if (answers.reportType === 'spec') {
       devModules.push('jasmine-spec-reporter');
@@ -20,7 +21,7 @@ const installModules = (answers: any) => {
     if (answers.transpiler) {
       if (answers.transpilerType === 'typescript') {
         devModules.push('typescript', '@types/node', '@types/mocha', 'ts-node');
-      } else {
+      } else if (answers.transpilerType === 'coffee-script') {
         devModules.push('coffee-script');
       }
     }
@@ -33,12 +34,19 @@ const installModules = (answers: any) => {
     if (answers.transpiler) {
       if (answers.transpilerType === 'typescript') {
         devModules.push('typescript', '@types/node', '@types/cucumber', 'ts-node');
-      } else {
+      } else if (answers.transpilerType === 'coffee-script') {
         devModules.push('coffee-script');
       }
     }
     if (answers.cucumberReportType === 'html') {
       devModules.push('cucumber-html-reporter');
+    }
+  }
+  if (answers.linter) {
+    if (answers.linter === 'tslint') {
+      devModules.push('tslint', 'tslint-eslint-rules');
+    } else {
+      devModules.push('eslint', 'eslint-plugin-protractor');
     }
   }
 
