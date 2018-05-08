@@ -42,7 +42,7 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
-    "cross-spawn": "^5.1.0",
+    "cross-spawn": "^6.0.5",
     "ejs": "^2.6.1",
     "inquirer": "^5.0.0",
     "js-beautify": "^1.7.5",

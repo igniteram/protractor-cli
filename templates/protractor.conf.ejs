@@ -113,7 +113,12 @@ exports.config = {
     * Mocha has limited support. You will need to include your
     * own assertion framework (such as Chai) if working with Mocha.
     */
+    <% if(answers.framework === 'cucumber') { %>
+    framework: 'custom',
+    frameworkPath: require.resolve("protractor-cucumber-framework"),
+    <% } else { _%>
     framework: '<%= answers.framework%>',
+    <% } _%> 
     /**
     * Required. Spec patterns are relative to the location of this config.
     *
@@ -125,14 +130,14 @@ exports.config = {
     specs: [
         '<%= answers.specs %>'
     ],
-    <%_ if(answers.framework.match(/(jasmine|mocha)/) && answers.reportType === "json") { %>
+    <%_ if(answers.framework.match(/(jasmine|mocha)/) && answers.reportType === "json") { _%>
     /**
     * If set, protractor will save the test output in json format at this path.
     * The path is relative to the location of this config.
     */
     resultJsonOutputFile: "<%= `${answers.reportPath}/`+'protractor_report.json' %>",
-    <% } _%>
-    <%_ if(beforeLaunchExpression) { %>
+    <%_ } _%>
+    <%_ if(beforeLaunchExpression) { _%>
     /**
     * A callback function called once configs are read but before any
     * environment setup. This will only run once, and before onPrepare.
@@ -147,8 +152,8 @@ exports.config = {
     beforeLaunch: () => {
         <%- beforeLaunchExpression _%>
     },
-    <% } %>
-    <% if(answers.framework === "jasmine") { _%>
+    <%_ } _%>
+    <%_ if(answers.framework === "jasmine") { _%>
     /**
     * Options to be passed to jasmine.
     *
@@ -163,8 +168,8 @@ exports.config = {
         showColors: true,
         random: false,
     },
-    <% } _%>
-    <% if(answers.framework === "mocha") { _%>
+    <%_ } _%>
+    <%_ if(answers.framework === "mocha") { _%>
     /**
     * Options to be passed to Mocha.
     *
@@ -178,8 +183,8 @@ exports.config = {
         timeout: 30000,
         ui: "bdd",
         },
-        <% } _%>
-    <% if(onPrepareExpression) { %>
+        <%_ } _%>
+    <%_ if(onPrepareExpression) { %>
     /**
     * A callback function called once protractor is ready and available, and
     * before the specs are executed. If multiple capabilities are being run,
@@ -211,8 +216,8 @@ exports.config = {
     onPrepare: () => {
         <%- onPrepareExpression %>
     },
-    <% } %>  
-    <% if(answers.framework === "cucumber"){ %>
+    <%_ } %>  
+    <%_ if(answers.framework === "cucumber"){ %>
         /**
         * Options to be passed to cucumber.
         *
