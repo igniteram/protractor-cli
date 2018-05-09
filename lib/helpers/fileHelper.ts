@@ -128,11 +128,13 @@ export class FileHelper {
       this.createESLintRCFile();
     }
     if (answers.logging === 'error') {
-      this.logExpression = `require('protractor/built/logger').Logger.logLevel = 0`;
+      this.logExpression = answers.logging.toUpperCase();
     } else if (answers.logging === 'warn') {
-      this.logExpression = `require('protractor/built/logger').Logger.logLevel = 1`;
+      this.logExpression = answers.logging.toUpperCase();
     } else if (answers.logging === 'debug') {
-      this.logExpression = `require('protractor/built/logger').Logger.logLevel = 3`;
+      this.logExpression = answers.logging.toUpperCase();
+    } else {
+      this.logExpression = 'INFO';
     }
     if (answers.createReportPath) {
       FileHelper.createDirectory(answers.reportPath);
