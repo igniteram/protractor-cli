@@ -55,9 +55,9 @@
     "@types/jest": "^21.1.1",
     "@types/js-beautify": "0.0.31",
     "@types/mkdirp": "^0.5.2",
-    "@types/node": "^8.10.12",
+    "@types/node": "^8.10.14",
     "clang-format": "^1.0.55",
-    "jest": "^21.1.0",
+    "jest": "^22.4.3",
     "ts-jest": "^21.0.1",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"

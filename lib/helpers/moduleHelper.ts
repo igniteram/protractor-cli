@@ -7,8 +7,8 @@ const installModules = (answers: any) => {
   if (answers.framework === 'jasmine') {
     if (answers.transpilerType === 'typescript') {
       devModules.push('typescript', '@types/node', '@types/jasmine', 'ts-node');
-    } else if (answers.transpilerType === 'coffee-script') {
-      devModules.push('coffee-script');
+    } else if (answers.transpilerType === 'coffeescript') {
+      devModules.push('coffeescript');
     }
     if (answers.reportType === 'spec') {
       devModules.push('jasmine-spec-reporter');
@@ -21,8 +21,8 @@ const installModules = (answers: any) => {
     if (answers.transpiler) {
       if (answers.transpilerType === 'typescript') {
         devModules.push('typescript', '@types/node', '@types/mocha', 'ts-node');
-      } else if (answers.transpilerType === 'coffee-script') {
-        devModules.push('coffee-script');
+      } else if (answers.transpilerType === 'coffeescript') {
+        devModules.push('coffeescript');
       }
     }
     if (answers.reportType === 'html') {
@@ -34,8 +34,8 @@ const installModules = (answers: any) => {
     if (answers.transpiler) {
       if (answers.transpilerType === 'typescript') {
         devModules.push('typescript', '@types/node', '@types/cucumber', 'ts-node');
-      } else if (answers.transpilerType === 'coffee-script') {
-        devModules.push('coffee-script');
+      } else if (answers.transpilerType === 'coffeescript') {
+        devModules.push('coffeescript');
       }
     }
     if (answers.cucumberReportType === 'html') {

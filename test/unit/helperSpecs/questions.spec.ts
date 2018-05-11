@@ -167,7 +167,7 @@ describe('To test the questions object and verify its contents', () => {
   });
 
   it('should verify transpilerType object', () => {
-    expect(questions[15].choices).toEqual(['typescript', 'coffee-script']);
+    expect(questions[15].choices).toEqual(['typescript', 'coffeescript']);
     expect(questions[15].name).toBe('transpilerType');
     expect(questions[15].message).toBe('Please select the transpiler:');
     expect(questions[15].default).toBe('typescript');
@@ -187,7 +187,7 @@ describe('To test the questions object and verify its contents', () => {
       transpilerType: 'typescript',
     };
     expect(questions[16].default(answers)).toBe('./test/specs/**/*.ts');
-    answers.transpilerType = 'coffee-script';
+    answers.transpilerType = 'coffeescript';
     expect(questions[16].default(answers)).toBe('./test/specs/**/*.coffee');
     delete answers.transpilerType;
     expect(questions[16].default(answers)).toBe('./test/specs/**/*.js');
@@ -228,7 +228,7 @@ describe('To test the questions object and verify its contents', () => {
       transpilerType: 'typescript',
     };
     expect(questions[19].default(answers)).toBe('./features/stepDefinitions/**/*.ts');
-    answers.transpilerType = 'coffee-script';
+    answers.transpilerType = 'coffeescript';
     expect(questions[19].default(answers)).toBe('./features/stepDefinitions/**/*.coffee');
     delete answers.transpilerType;
     expect(questions[19].default(answers)).toBe('./features/stepDefinitions/**/*.js');
@@ -264,7 +264,7 @@ describe('To test the questions object and verify its contents', () => {
     const answers = {
       transpilerType: 'typescript',
     };
-    expect(questions[22].when(answers)).not.toBe('coffee-script');
+    expect(questions[22].when(answers)).not.toBe('coffeescript');
   });
 
   it('should verify reports objects', () => {

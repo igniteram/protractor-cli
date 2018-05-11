@@ -74,8 +74,8 @@ export class FileHelper {
       if (answers.transpilerType === 'typescript') {
         this.tsconfigTypes.push('mocha');
         this.transpilerExpression = `'ts:ts-node/register'`;
-      } else if (answers.transpilerType === 'coffee-script') {
-        this.transpilerExpression = `'coffee:coffee-script/register'`;
+      } else if (answers.transpilerType === 'coffeescript') {
+        this.transpilerExpression = `'coffee:coffeescript/register'`;
       }
       if (answers.reportType === 'html') {
         this.mochaReportExpression = `'mochawesome',
@@ -92,8 +92,8 @@ export class FileHelper {
       if (answers.transpilerType === 'typescript') {
         this.tsconfigTypes.push('cucumber');
         this.transpilerExpression = `'ts:ts-node/register'`;
-      } else if (answers.transpilerType === 'coffee-script') {
-        this.transpilerExpression = `'coffee:coffee-script/register'`;
+      } else if (answers.transpilerType === 'coffeescript') {
+        this.transpilerExpression = `'coffee:coffeescript/register'`;
       }
       this.formatExpression = answers.cucumberReportType;
       if (answers.cucumberReportType === 'json') {
