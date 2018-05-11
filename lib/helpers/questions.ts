@@ -5,7 +5,7 @@ const linters = ['eslint-plugin-protractor', 'tslint'];
 const logType = ['info', 'error', 'warn', 'debug'];
 const reportTypes = ['dot', 'spec', 'json', 'html'];
 const cucumberReportTypes = ['progress', 'summary', 'json', 'html'];
-const transpilers = ['typescript', 'coffee-script'];
+const transpilers = ['typescript', 'coffeescript'];
 
 const questions: any[] = [
   {
@@ -129,7 +129,7 @@ const questions: any[] = [
     default: (answers: any) => {
       if (answers.transpilerType === 'typescript') {
         return './test/specs/**/*.ts';
-      } else if (answers.transpilerType === 'coffee-script') {
+      } else if (answers.transpilerType === 'coffeescript') {
         return './test/specs/**/*.coffee';
       } else {
         return './test/specs/**/*.js';
@@ -165,7 +165,7 @@ const questions: any[] = [
     default: (answers: any) => {
       if (answers.transpilerType === 'typescript') {
         return './features/stepDefinitions/**/*.ts';
-      } else if (answers.transpilerType === 'coffee-script') {
+      } else if (answers.transpilerType === 'coffeescript') {
         return './features/stepDefinitions/**/*.coffee';
       } else {
         return './features/stepDefinitions/**/*.js';
@@ -197,7 +197,7 @@ const questions: any[] = [
     message: 'Please select the following linters to install:',
     name: 'linter',
     type: 'list',
-    when: (answers: any) => answers.transpilerType !== 'coffee-script',
+    when: (answers: any) => answers.transpilerType !== 'coffeescript',
   },
   {
     default: true,
