@@ -86,11 +86,11 @@ Jasmine being the default framework. Mocha & Cucumber have good support as well!
 
 Since this project has been entirely written using [TypeScript](https://www.typescriptlang.org/). You would find extensive support for it. Protractor also has recently migrated to typescript.
 
-You could use the typescript features by simply selecting your specific framework & transpiler option provided by cliptor. 
+You could use the typescript features by simply selecting your specific framework & transpiler option provided by protractor-cli. 
 
 Jasmine being the default framework , protractor-cli asks whether you would want to use typescript as a transpiler which then installs **typescript**, **jasmine types** and also generates **tsconfig.json** automatically!
 
-[Coffee-Script](http://coffeescript.org/) support has also been provided with **mocha** & **cucumber** frameworks. You could write your scripts using coffee-script and the above frameworks will auto-compile them. The best part is you don't have to do it manaully as cliptor does it for you!
+[Coffee-Script](http://coffeescript.org/) support has also been provided with **mocha** & **cucumber** frameworks. You could write your scripts using coffee-script and the above frameworks will auto-compile them. The best part is you don't have to do it manaully as protractor-cli does it for you!
 
 ### Browser Configuration
 
@@ -117,7 +117,7 @@ Protractor has 4 types of logging mechanism -
 * **debug**
 * **error**
 
-One could refer this [StackOverFlow link](https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels) to understand what they are and when to use them. Normally you would have to configure these in your config file manually but now cliptor does it for you.
+One could refer this [StackOverFlow link](https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels) to understand what they are and when to use them. Normally you would have to configure these in your config file manually but now protractor-cli does it for you.
 
 ### Reports
 
@@ -141,7 +141,7 @@ cd protractor-cli
 npm link
 ```
 
-`npm link` is very similar to `npm install -g` except that instead of downloading the package from the repo, the just cloned Cliptor folder becomes the global package.
+`npm link` is very similar to `npm install -g` except that instead of downloading the package from the repo, the just cloned protractor-cli folder becomes the global package.
 
 `cliptor` binary will be available to you globally and any changes you make in this folder could be verified by running binary from anywhere.
 
