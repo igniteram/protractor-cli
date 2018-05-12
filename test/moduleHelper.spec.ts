@@ -1,5 +1,5 @@
-import {devModules, installModules} from '../../../lib/helpers/moduleHelper';
-import {NpmUtil} from '../../../lib/utils/npmUtil';
+import {devModules, installModules} from '../lib/helpers/moduleHelper';
+import {NpmUtil} from '../lib/utils/npmUtil';
 
 const removeDevModule = (element: string) => {
   const devIndex = devModules.indexOf(element);

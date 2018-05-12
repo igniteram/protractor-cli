@@ -1,5 +1,5 @@
 <p align="center">
-<img src= "./images/cliptor.png" height=150 alt="cliptor.png"/>
+<img src= "./images/protractor-cli.png" height=150 alt="protractor-cli.png"/>
 </p>
 
 <p align="center">
@@ -20,17 +20,17 @@
 
 ## About
 
-Cliptor is an interactive command line interface which helps in setting up hassle free protractor projects. It takes user's inputs for generating protractor config files and also downloads the dependencies needed for writing e2e tests.
+Protractor-CLI(formerly Cliptor.js) is an interactive command line interface which helps in setting up hassle free protractor projects. It takes user's inputs for generating protractor config files and also downloads the dependencies needed for writing e2e tests.
 
 <p>
   <img src="./images/cliptor.gif" alt="cliptor.gif"/>
 </p>
 
-### What Cliptor is trying to solve?
+### What protractor-cli is trying to solve?
 
 Since protractor supports multiple frameworks and has many functionalities associated with them , users face it quite challenging to know the config options and experience a hard time to choose the right library to use in their e2e projects. 
 
-Cliptor focuses primarily to solve these issues by generating config files based on user's input and downloads the respective dependencies automatically.
+This project focuses primarily to solve these issues by generating config files based on user's input and downloads the respective dependencies automatically.
 
 ## To Get Started
 
@@ -40,14 +40,14 @@ https://nodejs.org/en/download/
 
 ## Installation
 
-Let's start by installing Cliptor globally with [npm](https://www.npmjs.com/).
+Let's start by installing protractor-cli globally with [npm](https://www.npmjs.com/).
 
 ```sh
-$ npm install --global cliptor
+$ npm install --global protractor-cli
 ```
 ## Commands
 
-Cliptor currently supports two primary commands - **config** & **install** with no arguments.
+A global binary **cliptor** will be installed, currently it supports two primary commands - **config** & **install** with no arguments.
 `cliptor --help` will show these list commands. `cliptor --version` will show the current version of cliptor. 
 
 ### config
@@ -66,7 +66,7 @@ This installs protractor & webdriver-manager globally, it also updates webdriver
 
 ## Library Support
 
-Cliptor supports all the major libraries and frameworks that **Protractor** currently supports, let us have a look-
+Protractor-CLI supports all the major libraries and frameworks that **Protractor** currently supports, let us have a look-
 
 ### Test Frameworks
 
@@ -84,17 +84,17 @@ Jasmine being the default framework. Mocha & Cucumber have good support as well!
 </div>
 
 
-Since cliptor has been entirely written using [TypeScript](https://www.typescriptlang.org/). You would find extensive support for it. Protractor also has recently migrated to typescript.
+Since this project has been entirely written using [TypeScript](https://www.typescriptlang.org/). You would find extensive support for it. Protractor also has recently migrated to typescript.
 
 You could use the typescript features by simply selecting your specific framework & transpiler option provided by cliptor. 
 
-Jasmine being the default framework , cliptor asks whether you would want to use typescript as a transpiler which then installs **typescript**, **jasmine types** and also generates **tsconfig.json** automatically!
+Jasmine being the default framework , protractor-cli asks whether you would want to use typescript as a transpiler which then installs **typescript**, **jasmine types** and also generates **tsconfig.json** automatically!
 
 [Coffee-Script](http://coffeescript.org/) support has also been provided with **mocha** & **cucumber** frameworks. You could write your scripts using coffee-script and the above frameworks will auto-compile them. The best part is you don't have to do it manaully as cliptor does it for you!
 
 ### Browser Configuration
 
-Cliptor supports all three major browser configuration -
+Protractor-CLI supports all three major browser configuration -
 
 <div class="images" >
 <img style="float:right margin:0px 10px;" src="./images/chrome.png" height=50>
@@ -121,7 +121,7 @@ One could refer this [StackOverFlow link](https://stackoverflow.com/questions/20
 
 ### Reports
 
-Cliptor installs & configures popular & well maintained report modules which could be integrated with protractor.
+Protractor-CLI installs & configures popular & well maintained report modules which could be integrated with protractor.
 
 Framework | Report Types | Report Module
 ---       | ---          | ---          
@@ -136,8 +136,8 @@ For contributors who want to improve this repo by contributing some code, report
 #### Development Hints
 
 ```
-git clone https://github.com/igniteram/Cliptor.js.git
-cd Cliptor.js
+git clone https://github.com/igniteram/protractor-cli.git
+cd protractor-cli
 npm link
 ```
 
@@ -147,4 +147,4 @@ npm link
 
 ### Attributions
 
-Cliptor was mainly inspired by [WebdriverIO’s](https://github.com/webdriverio/webdriverio) cli. I would also like to give credit to the Angular’s Protractor community for creating such a wonderful project which inspired this project development.
+Protractor-CLI was mainly inspired by [WebdriverIO’s](https://github.com/webdriverio/webdriverio) cli. I would also like to give credit to the Angular’s Protractor community for creating such a wonderful project which inspired this project development.
