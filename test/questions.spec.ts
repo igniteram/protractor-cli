@@ -1,4 +1,4 @@
-import {questions} from '../../../lib/helpers/questions';
+import {questions} from '../lib/helpers/questions';
 const totalQuestions: number = questions.length;
 
 describe('To test the questions object and verify its contents', () => {
