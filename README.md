@@ -7,8 +7,8 @@
 <p>
 
 <p align="center">
-<a href="https://circleci.com/gh/igniteram/Cliptor.js/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/Cliptor.js/tree/master.svg?style=shield"></a>
-<a href="https://david-dm.org/igniteram/Cliptor.js"><img alt="dependencies status" src="https://david-dm.org/igniteram/Cliptor.js/status.svg"></a>
+<a href="https://circleci.com/gh/igniteram/protractor-cli/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/protractor-cli/tree/master.svg?style=shield"></a>
+<a href="https://david-dm.org/igniteram/protractor-cli"><img alt="dependencies status" src="https://david-dm.org/igniteram/protractor-cli/status.svg"></a>
 <a href="https://badge.fury.io/js/cliptor"><img src="https://badge.fury.io/js/cliptor.svg" alt="npm version" height="18"></a>
 <a href="https://github.com/facebook/jest"><img alt="JEST" src="https://img.shields.io/badge/tested_with-jest-99424f.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg"></a>
