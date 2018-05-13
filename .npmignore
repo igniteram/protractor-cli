@@ -14,4 +14,3 @@ test/
 .gitattributes
 .npmignore
 tsconfig.json
-tslint.json
