@@ -1,5 +1,5 @@
 {
-  "name": "cliptor",
+  "name": "protractor-cli",
   "version": "1.0.0",
   "description": "Protractor's Interactive CLI",
   "main": "built/cli.js",
