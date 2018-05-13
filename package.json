@@ -1,6 +1,6 @@
 {
   "name": "protractor-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Protractor's Interactive CLI",
   "main": "built/cli.js",
   "repository": {
