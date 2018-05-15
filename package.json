@@ -5,7 +5,7 @@
   "main": "built/cli.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/igniteram/Cliptor.js.git"
+    "url": "git://github.com/igniteram/protractor-cli.git"
   },
   "bin": {
     "cliptor": "bin/cliptor"
@@ -15,6 +15,8 @@
     "build": "tsc",
     "clean": "rimraf built/",
     "clean-build": "npm run clean && npm run build",
+    "precommit": "npm run clean-build && npm run lint",
+    "commit": "git-cz",
     "format": "clang-format -i --glob='+(lib|test)/**/*.ts'",
     "lint": "tslint -c tslint.json 'lib/**/*.ts'",
     "prepublish": "npm run clean-build",
@@ -57,6 +59,8 @@
     "@types/mkdirp": "^0.5.2",
     "@types/node": "^8.10.14",
     "clang-format": "^1.0.55",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
     "jest": "^22.4.3",
     "ts-jest": "^21.0.1",
     "tslint": "^5.10.0",
@@ -84,5 +88,10 @@
       "<rootDir>/built/lib",
       "<rootDir>/node_modules/"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
