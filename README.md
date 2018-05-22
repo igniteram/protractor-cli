@@ -8,6 +8,10 @@
 
 <p align="center">
 <a href="https://circleci.com/gh/igniteram/protractor-cli/tree/master"><img alt="circleCI Status" src="https://circleci.com/gh/igniteram/protractor-cli/tree/master.svg?style=shield"></a>
+<<<<<<< HEAD
+=======
+<a href="http://commitizen.github.io/cz-cli/"><img alt="commitizen" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>
+>>>>>>> master
 <a href="https://david-dm.org/igniteram/protractor-cli"><img alt="dependencies status" src="https://david-dm.org/igniteram/protractor-cli/status.svg"></a>
 <a href="https://badge.fury.io/js/cliptor"><img src="https://badge.fury.io/js/cliptor.svg" alt="npm version" height="18"></a>
 <a href="https://github.com/facebook/jest"><img alt="JEST" src="https://img.shields.io/badge/tested_with-jest-99424f.svg"></a>
@@ -135,15 +139,7 @@ For contributors who want to improve this repo by contributing some code, report
 
 #### Development Hints
 
-```
-git clone https://github.com/igniteram/protractor-cli.git
-cd protractor-cli
-npm link
-```
-
-`npm link` is very similar to `npm install -g` except that instead of downloading the package from the repo, the just cloned protractor-cli folder becomes the global package.
-
-`cliptor` binary will be available to you globally and any changes you make in this folder could be verified by running binary from anywhere.
+Please see the [DEVELOPER.md](./DEVELOPER.md) file.
 
 ### Attributions
 
