@@ -136,15 +136,7 @@ For contributors who want to improve this repo by contributing some code, report
 
 #### Development Hints
 
-```
-git clone https://github.com/igniteram/protractor-cli.git
-cd protractor-cli
-npm link
-```
-
-`npm link` is very similar to `npm install -g` except that instead of downloading the package from the repo, the just cloned protractor-cli folder becomes the global package.
-
-`cliptor` binary will be available to you globally and any changes you make in this folder could be verified by running binary from anywhere.
+Please see [DEVELOPER.md](https://github.com/igniteram/protractor-cli/blob/master/DEVELOPER.md)
 
 ### Attributions
 
