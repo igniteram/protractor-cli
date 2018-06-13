@@ -1,9 +1,9 @@
-import {NpmUtil} from '../utils/npmUtil';
+import {checkPackageJson, installPkgs} from '../utils/npmUtil';
 
 // install protractor by default as dev dependency
 const devModules: string[] = ['protractor'];
 
-const installModules = (answers: any) => {
+async function installModules(answers: any) {
   if (answers.framework === 'jasmine') {
     if (answers.transpilerType === 'typescript') {
       devModules.push('typescript', '@types/node', '@types/jasmine', 'ts-node');
@@ -51,12 +51,16 @@ const installModules = (answers: any) => {
   }
 
   if (devModules.length > 0) {
-    NpmUtil.checkPackageJson();
-    NpmUtil.installPkgs('Installing dev dependencies...', devModules, {
-      saveDev: true,
-    });
+    try {
+      await checkPackageJson();
+      await installPkgs('Installing dev dependencies...', devModules, {
+        saveDev: true,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
-};
+}
 
 /**
  * Public Interface

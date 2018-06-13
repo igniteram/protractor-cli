@@ -132,7 +132,7 @@ exports.config = {
     /**
     * Protractor Log Level Config
     */
-    logLevel: <%- logExpression _%>,
+    logLevel: '<%- logExpression _%>',
     <%_ if(answers.framework.match(/(jasmine|mocha)/) && answers.reportType === "json") { _%>
     /**
     * If set, protractor will save the test output in json format at this path.

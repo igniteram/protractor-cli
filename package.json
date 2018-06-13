@@ -1,6 +1,6 @@
 {
   "name": "protractor-cli",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Protractor's Interactive CLI",
   "main": "built/cli.js",
   "repository": {
@@ -44,7 +44,6 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
-    "cross-spawn": "^6.0.5",
     "ejs": "^2.6.1",
     "inquirer": "^5.0.0",
     "js-beautify": "^1.7.5",
@@ -64,7 +63,8 @@
     "jest": "^22.4.3",
     "ts-jest": "^21.0.1",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "tslint-eslint-rules": "^5.3.1",
+    "typescript": "^2.9.1"
   },
   "typings": "built/index",
   "engines": {
@@ -86,7 +86,8 @@
     "testRegex": "/test/.*\\.(ts|js)$",
     "testPathIgnorePatterns": [
       "<rootDir>/built/lib",
-      "<rootDir>/node_modules/"
+      "<rootDir>/node_modules/",
+      "<rootDir>/test/moduleHelper.spec.ts"
     ]
   },
   "config": {

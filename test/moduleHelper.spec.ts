@@ -1,5 +1,5 @@
 import {devModules, installModules} from '../lib/helpers/moduleHelper';
-import {NpmUtil} from '../lib/utils/npmUtil';
+import {unInstallPkgs} from '../lib/utils/npmUtil';
 
 const removeDevModule = (element: string) => {
   const devIndex = devModules.indexOf(element);
@@ -16,8 +16,8 @@ const removeDevModules = (elements: any) => {
   }
 };
 
-describe('To test the install module function and verify its installation process', () => {
-  it('Verify module installation if framework is jasmine with typescript', () => {
+describe('To test the install module function and verify its installation process', async () => {
+  it('Verify module installation if framework is jasmine with typescript', async () => {
     const answers = {
       framework: 'jasmine',
       transpilerType: 'typescript',
@@ -31,11 +31,11 @@ describe('To test the install module function and verify its installation proces
       '@types/jasmine',
       'ts-node',
     ]);
-    NpmUtil.unInstallPkgs('', ['protractor', '@types/jasmine', 'ts-node'], {saveDev: true});
+    await unInstallPkgs('', ['protractor', '@types/jasmine', 'ts-node'], {saveDev: true});
     removeDevModules(['@types/jasmine', 'typescript', '@types/node', 'ts-node']);
   });
 
-  it('Verify module installation if framework is jasmine with coffeescript', () => {
+  it('Verify module installation if framework is jasmine with coffeescript', async () => {
     const answers = {
       framework: 'jasmine',
       transpilerType: 'coffeescript',
@@ -46,11 +46,11 @@ describe('To test the install module function and verify its installation proces
       'protractor',
       'coffeescript',
     ]);
-    NpmUtil.unInstallPkgs('', ['protractor', 'coffeescript'], {saveDev: true});
+    await unInstallPkgs('', ['protractor', 'coffeescript'], {saveDev: true});
     removeDevModules(['coffeescript']);
   });
 
-  it('Verify module installation if framework is jasmine with spec reporter', () => {
+  it('Verify module installation if framework is jasmine with spec reporter', async () => {
     const answers = {
       framework: 'jasmine',
       reportType: 'spec',
@@ -59,11 +59,11 @@ describe('To test the install module function and verify its installation proces
     mockFn(answers);
     expect(devModules).not.toContain('typescript');
     expect(devModules).toContain('jasmine-spec-reporter');
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModule('jasmine-spec-reporter');
   });
 
-  it('Verify module installation if framework is jasmine with html reporter', () => {
+  it('Verify module installation if framework is jasmine with html reporter', async () => {
     const answers = {
       framework: 'jasmine',
       reportType: 'html',
@@ -72,11 +72,11 @@ describe('To test the install module function and verify its installation proces
     mockFn(answers);
     expect(devModules).not.toContain('typescript');
     expect(devModules).toContain('protractor-jasmine2-screenshot-reporter');
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModule('protractor-jasmine2-screenshot-reporter');
   });
 
-  it('Verify module installation if framework is mocha with typescript', () => {
+  it('Verify module installation if framework is mocha with typescript', async () => {
     const answers = {
       framework: 'mocha',
       transpiler: true,
@@ -92,11 +92,11 @@ describe('To test the install module function and verify its installation proces
       '@types/mocha',
       'ts-node',
     ]);
-    NpmUtil.unInstallPkgs('', ['protractor', '@types/mocha', 'ts-node'], {saveDev: true});
+    await unInstallPkgs('', ['protractor', '@types/mocha', 'ts-node'], {saveDev: true});
     removeDevModules(['typescript', '@types/node', '@types/mocha', 'ts-node']);
   });
 
-  it('Verify module installation if framework is mocha with coffeescript', () => {
+  it('Verify module installation if framework is mocha with coffeescript', async () => {
     const answers = {
       framework: 'mocha',
       transpiler: true,
@@ -107,11 +107,11 @@ describe('To test the install module function and verify its installation proces
     expect(devModules).not.toContain('typescript');
     expect(devModules).toContain('coffeescript');
     expect(devModules.length).toEqual(2);
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModule('coffeescript');
   });
 
-  it('Verify module installation if framework is mocha with html report', () => {
+  it('Verify module installation if framework is mocha with html report', async () => {
     const answers = {
       framework: 'mocha',
       reportType: 'html',
@@ -121,11 +121,11 @@ describe('To test the install module function and verify its installation proces
     expect(devModules).not.toContain('typescript');
     expect(devModules).not.toContain('coffeescript');
     expect(devModules).toContain('mochawesome');
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModule('mochawesome');
   });
 
-  it('Verify module installation if framework is cucumber', () => {
+  it('Verify module installation if framework is cucumber', async () => {
     const answers = {
       framework: 'cucumber',
     };
@@ -134,11 +134,11 @@ describe('To test the install module function and verify its installation proces
     expect(devModules).not.toContain('typescript');
     expect(devModules).not.toContain('coffeescript');
     expect(devModules).toEqual(['protractor', 'cucumber', 'protractor-cucumber-framework']);
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModules(['cucumber', 'protractor-cucumber-framework']);
   });
 
-  it('Verify module installation if framework is cucumber with typescript', () => {
+  it('Verify module installation if framework is cucumber with typescript', async () => {
     const answers = {
       framework: 'cucumber',
       transpiler: true,
@@ -156,7 +156,7 @@ describe('To test the install module function and verify its installation proces
       '@types/cucumber',
       'ts-node',
     ]);
-    NpmUtil.unInstallPkgs(
+    await unInstallPkgs(
         '',
         ['protractor', 'cucumber', 'protractor-cucumber-framework', '@types/cucumber', 'ts-node'],
         {saveDev: true});
@@ -170,7 +170,7 @@ describe('To test the install module function and verify its installation proces
     ]);
   });
 
-  it('Verify module installation if framework is cucumber with coffeescript', () => {
+  it('Verify module installation if framework is cucumber with coffeescript', async () => {
     const answers = {
       framework: 'cucumber',
       transpiler: true,
@@ -185,11 +185,11 @@ describe('To test the install module function and verify its installation proces
       'protractor-cucumber-framework',
       'coffeescript',
     ]);
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModules(['cucumber', 'protractor-cucumber-framework', 'coffeescript']);
   });
 
-  it('Verify module installation if framework is cucumber with html report', () => {
+  it('Verify module installation if framework is cucumber with html report', async () => {
     const answers = {
       cucumberReportType: 'html',
       framework: 'cucumber',
@@ -199,11 +199,11 @@ describe('To test the install module function and verify its installation proces
     expect(devModules).not.toContain('typescript');
     expect(devModules).not.toContain('coffeescript');
     expect(devModules).toContain('cucumber-html-reporter');
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModules(['cucumber', 'protractor-cucumber-framework', 'cucumber-html-reporter']);
   });
 
-  it('Verify module installation if linter is eslint-plugin-protractor', () => {
+  it('Verify module installation if linter is eslint-plugin-protractor', async () => {
     const answers = {
       linter: 'eslint-plugin-protractor',
     };
@@ -211,11 +211,11 @@ describe('To test the install module function and verify its installation proces
     mockFn(answers);
     expect(devModules).not.toContain('coffeescript');
     expect(devModules).toEqual(['protractor', 'eslint', 'eslint-plugin-protractor']);
-    NpmUtil.unInstallPkgs('', devModules, {saveDev: true});
+    await unInstallPkgs('', devModules, {saveDev: true});
     removeDevModules(['eslint', 'eslint-plugin-protractor']);
   });
 
-  it('Verify module installation if linter is tslint', () => {
+  it('Verify module installation if linter is tslint', async () => {
     const answers = {
       linter: 'tslint',
     };
@@ -223,7 +223,7 @@ describe('To test the install module function and verify its installation proces
     mockFn(answers);
     expect(devModules).not.toContain('coffeescript');
     expect(devModules).toEqual(['protractor', 'tslint', 'tslint-eslint-rules']);
-    NpmUtil.unInstallPkgs('', ['protractor', 'tslint-eslint-rules'], {saveDev: true});
+    await unInstallPkgs('', ['protractor', 'tslint-eslint-rules'], {saveDev: true});
     removeDevModules(['protractor', 'tslint', 'tslint-eslint-rules']);
   });
 });

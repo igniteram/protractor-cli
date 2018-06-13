@@ -1,78 +1,121 @@
-const spawn = require('cross-spawn');
+import {existsAsync} from '../helpers/fileHelper';
+const {spawn} = require('child_process');
 const chalk = require('chalk');
-import * as fs from 'fs';
+
 import * as path from 'path';
 
-export class NpmUtil {
-  public static checkPackageJson() {
-    const dir = path.resolve(process.cwd());
-    const pkgJson = path.join(dir, 'package.json');
-    if (!fs.existsSync(pkgJson)) {
-      console.log(
-          chalk.red('\nCould not find a package.json file! ') +
-          chalk.green('Creating package.json...'));
-      spawn.sync('npm', ['init', '--yes'], {stdio: 'pipe'});
-    }
-    try {
-      const fileJson = JSON.parse(fs.readFileSync(pkgJson, 'utf8'));
-    } catch (e) {
-      console.log(chalk.red(
-          'Could not read package.json file. Please check that the file contains valid JSON.'));
-      throw new Error(e);
-    }
-  }
+async function checkPackageJson() {
+  const dir = path.resolve(process.cwd());
+  const pkgJson = path.join(dir, 'package.json');
+  if (!await (existsAsync(pkgJson))) {
+    console.log(
+        chalk.red('\nCould not find a package.json file! ') +
+        chalk.green('Creating package.json...'));
 
-  public static installPkgs =
-      (des: any, packages: string[], opts: any) => {
-        const args: string[] = [];
-        if (opts.save) {
-          args.push('-S');
-        }
-        if (opts.saveDev) {
-          args.push('-D');
-        }
-        if (opts.global) {
-          args.push('-g');
-        }
-        const cliArgs: string[] = ['i'].concat(args, packages);
-        if (typeof des === 'string') {
-          process.stdout.write('\n' + chalk.yellow(des) + '\n');
-        } else {
-          process.stdout.write('');
-        }
-        spawn.sync('npm', cliArgs, {stdio: 'pipe'});
+    const initPkg = spawn('npm', ['init', '--yes'], {stdio: 'pipe'});
+
+    let stderr = '';
+
+    initPkg.stderr.on('data', (data: any) => {
+      stderr += data;
+    });
+
+    initPkg.on('close', (code: number) => {
+      if (code !== 0) {
+        console.log(chalk.red(
+            '\nUnable to create package.json! ' +
+            `${stderr}`));
       }
-
-  public static unInstallPkgs =
-      (des: any, packages: string[], opts: any) => {
-        const args: string[] = [];
-        if (opts.save) {
-          args.push('-S');
-        }
-        if (opts.saveDev) {
-          args.push('-D');
-        }
-        if (opts.global) {
-          args.push('-g');
-        }
-        const cliArgs: string[] = ['uninstall'].concat(args, packages);
-        if (typeof des === 'string') {
-          process.stdout.write('\n' + chalk.yellow(des) + '\n');
-        } else {
-          process.stdout.write('');
-        }
-        spawn.sync('npm', cliArgs, {stdio: 'pipe'});
-      }
-
-  public static updateWebdriver = () => {
-    process.stdout.write(
-        chalk.yellow('\nDownloading chrome, firefox & internet explorer drivers...\n'));
-    spawn.sync('webdriver-manager', ['update', '--ie'], {stdio: 'pipe'});
-    console.log(`
-${chalk.green('Protractor & Webdriver-Manager dependencies installed successfully!')}
-${chalk.green('To start the selenium server, execute:')}
-
-${chalk.green('$ webdriver-manager start')}
-            `);
+    });
   }
 }
+
+async function installPkgs(des: string, packages: string[], opts: any) {
+  return new Promise((resolve, reject) => {
+    const args: string[] = ['--loglevel=error'];
+    if (opts.save) {
+      args.push('-S');
+    }
+    if (opts.saveDev) {
+      args.push('-D');
+    }
+    if (opts.global) {
+      args.push('-g');
+    }
+    const cliArgs: string[] = ['i'].concat(args, packages);
+
+    process.stdout.write('\n' + chalk.yellow(des) + '\n');
+
+    const install = spawn('npm', cliArgs, {stdio: 'inherit'});
+
+    install.on('error', (err: Error) => {
+      if (err) {
+        reject(err);
+      }
+    });
+
+    install.on('exit', (code: any) => {
+      if (code === 0) {
+        resolve('successfully installed packages!');
+      }
+    });
+  });
+}
+
+async function unInstallPkgs(des: string, packages: string[], opts: any) {
+  return new Promise((resolve, reject) => {
+    const args: string[] = ['--loglevel=error'];
+    if (opts.save) {
+      args.push('-S');
+    }
+    if (opts.saveDev) {
+      args.push('-D');
+    }
+    if (opts.global) {
+      args.push('-g');
+    }
+    const cliArgs: string[] = ['uninstall'].concat(args, packages);
+
+    process.stdout.write('\n' + chalk.yellow(des) + '\n');
+
+    const install = spawn('npm', cliArgs, {stdio: 'inherit'});
+
+    install.on('error', (err: Error) => {
+      if (err) {
+        reject(err);
+      }
+    });
+
+    install.on('exit', (code: any) => {
+      if (code === 0) {
+        resolve('successfully unInstalled packages!');
+      }
+    });
+  });
+}
+
+async function updateWebdriver() {
+  return new Promise((resolve, reject) => {
+    process.stdout.write(
+        chalk.yellow('\nDownloading chrome, firefox & internet explorer drivers...\n'));
+    const install = spawn('webdriver-manager', ['update', '--ie'], {stdio: 'inherit'});
+
+    install.on('error', (err: Error) => {
+      if (err) {
+        reject(err);
+      }
+    });
+
+    install.on('exit', (code: any) => {
+      if (code === 0) {
+        resolve(`
+${chalk.green('Protractor & Webdriver-Manager dependencies installed successfully!')}
+${chalk.green('To start the selenium server, execute:')}
+${chalk.green('$ webdriver-manager start')}
+`);
+      }
+    });
+  });
+}
+
+export {checkPackageJson, installPkgs, unInstallPkgs, updateWebdriver};
