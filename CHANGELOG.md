@@ -1,3 +1,14 @@
+## Release 1.1.0
+
+## Breaking Changes
+
+* removed cross-spawn dependency
+
+### Features
+
+- ([fc25d5e](https://github.com/igniteram/protractor-cli/commit/fc25d5edc09d775f35e356796c19e0425fc936d2)) 
+  feat(install modules): added npm progress & async installation
+
 ## Release 1.0.1
 
 ### Features
