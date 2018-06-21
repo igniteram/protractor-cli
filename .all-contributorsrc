@@ -1,0 +1,35 @@
+{
+  "projectName": "protractor-cli",
+  "projectOwner": "igniteram",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "igniteram",
+      "name": "Ram Pasala",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15998104?v=4",
+      "profile": "https://in.linkedin.com/in/rpasala",
+      "contributions": [
+        "code",
+        "doc",
+        "test",
+        "bug"
+      ]
+    },
+    {
+      "login": "cnishina",
+      "name": "Craig Nishina",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1559007?v=4",
+      "profile": "https://github.com/cnishina",
+      "contributions": [
+        "code",
+        "plugin"
+      ]
+    }
+  ]
+}

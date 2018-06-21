@@ -12,6 +12,7 @@
 <a href="https://david-dm.org/igniteram/protractor-cli"><img alt="dependencies status" src="https://david-dm.org/igniteram/protractor-cli/status.svg"></a>
 <a href="https://badge.fury.io/js/cliptor"><img src="https://badge.fury.io/js/cliptor.svg" alt="npm version" height="18"></a>
 <a href="https://github.com/facebook/jest"><img alt="JEST" src="https://img.shields.io/badge/tested_with-jest-99424f.svg"></a>
+<a href=#contributors><img alt="contributors" src="https://img.shields.io/badge/all_contributors-2-orange.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg"></a>
 </p>
 
@@ -141,3 +142,17 @@ Please see [DEVELOPER.md](https://github.com/igniteram/protractor-cli/blob/maste
 ### Attributions
 
 Protractor-CLI was mainly inspired by [WebdriverIO’s](https://github.com/webdriverio/webdriverio) cli. I would also like to give credit to the Angular’s Protractor community for creating such a wonderful project which inspired this project development.
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/15998104?v=4" width="100px;"/><br /><sub><b>Ram Pasala</b></sub>](https://in.linkedin.com/in/rpasala)<br />[💻](https://github.com/igniteram/protractor-cli/commits?author=igniteram "Code") [📖](https://github.com/igniteram/protractor-cli/commits?author=igniteram "Documentation") [⚠️](https://github.com/igniteram/protractor-cli/commits?author=igniteram "Tests") [🐛](https://github.com/igniteram/protractor-cli/issues?q=author%3Aigniteram "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/1559007?v=4" width="100px;"/><br /><sub><b>Craig Nishina</b></sub>](https://github.com/cnishina)<br />[💻](https://github.com/igniteram/protractor-cli/commits?author=cnishina "Code") [🔌](#plugin-cnishina "Plugin/utility libraries") |
+| :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
