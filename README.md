@@ -1,6 +1,4 @@
 <p align="center">
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
 <img src= "./images/protractor-cli.png" height=150 alt="protractor-cli.png"/>
 </p>
 
@@ -14,6 +12,7 @@
 <a href="https://david-dm.org/igniteram/protractor-cli"><img alt="dependencies status" src="https://david-dm.org/igniteram/protractor-cli/status.svg"></a>
 <a href="https://badge.fury.io/js/cliptor"><img src="https://badge.fury.io/js/cliptor.svg" alt="npm version" height="18"></a>
 <a href="https://github.com/facebook/jest"><img alt="JEST" src="https://img.shields.io/badge/tested_with-jest-99424f.svg"></a>
+<a href=#contributors><img alt="contributors" src="https://img.shields.io/badge/all_contributors-2-orange.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/dub/l/vibe-d.svg"></a>
 </p>
 
