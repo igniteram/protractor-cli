@@ -1,4 +1,6 @@
 <p align="center">
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
 <img src= "./images/protractor-cli.png" height=150 alt="protractor-cli.png"/>
 </p>
 
@@ -141,3 +143,17 @@ Please see [DEVELOPER.md](https://github.com/igniteram/protractor-cli/blob/maste
 ### Attributions
 
 Protractor-CLI was mainly inspired by [WebdriverIO’s](https://github.com/webdriverio/webdriverio) cli. I would also like to give credit to the Angular’s Protractor community for creating such a wonderful project which inspired this project development.
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars1.githubusercontent.com/u/15998104?v=4" width="100px;"/><br /><sub><b>Ram Pasala</b></sub>](https://in.linkedin.com/in/rpasala)<br />[💻](https://github.com/igniteram/protractor-cli/commits?author=igniteram "Code") [📖](https://github.com/igniteram/protractor-cli/commits?author=igniteram "Documentation") [⚠️](https://github.com/igniteram/protractor-cli/commits?author=igniteram "Tests") [🐛](https://github.com/igniteram/protractor-cli/issues?q=author%3Aigniteram "Bug reports") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
