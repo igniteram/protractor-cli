@@ -20,6 +20,16 @@
         "test",
         "bug"
       ]
+    },
+    {
+      "login": "cnishina",
+      "name": "Craig Nishina",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1559007?v=4",
+      "profile": "https://github.com/cnishina",
+      "contributions": [
+        "code",
+        "plugin"
+      ]
     }
   ]
 }
